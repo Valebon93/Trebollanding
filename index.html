@@ -69,7 +69,7 @@
     font-weight: 500;
   }
   h1, h2, h3 { font-weight: 800; letter-spacing: -0.02em; line-height: 1.02; margin: 0; text-wrap: balance; }
-  @media (max-width: 560px) { h2 { font-size: 30px; letter-spacing: -0.01em; } }
+  @media (max-width: 560px) { h2 { font-size: 28px; letter-spacing: -0.01em; } }
   h1, h2 { text-transform: uppercase; letter-spacing: -0.015em; }
   h3 { letter-spacing: -0.01em; }
   h1 { font-size: clamp(44px, 6.2vw, 92px); }
@@ -130,14 +130,17 @@
   .nav-drawer a { padding: 13px 12px; border-radius: 8px; font-weight: 600; font-size: 16px; color: var(--ink); }
   .nav-drawer a.active { color: var(--green-deep); background: var(--cream-2); }
   .nav-drawer a:hover { background: var(--cream-2); }
+  .nav-links a:focus-visible, .nav-drawer a:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
 
   /* ===== BUTTONS ===== */
   .btn {
     display: inline-flex; align-items: center; gap: 8px;
-    padding: 13px 22px; border-radius: 12px; font-weight: 600; font-size: 15px;
-    transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease;
+    padding: 13px 22px; border-radius: var(--radius); font-weight: 600; font-size: 15px;
+    min-height: 48px; box-sizing: border-box;
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
     white-space: nowrap;
   }
+  .btn:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
   .btn-primary { background: var(--ink); color: var(--cream); }
   .btn-primary:hover { transform: scale(1.02); box-shadow: 0 8px 20px rgba(21, 21, 21, 0.18); }
   .btn-green { background: var(--green); color: white; box-shadow: 0 6px 16px var(--green-glow); }
@@ -146,7 +149,7 @@
   .btn-ghost:hover { transform: scale(1.02); border-color: var(--ink); }
   .btn-text { padding: 13px 0; color: var(--ink); border-bottom: 1.5px solid var(--ink); border-radius: 0; }
   .btn-text:hover { color: var(--green-deep); border-color: var(--green); }
-  .btn-sm { padding: 9px 14px; font-size: 14px; border-radius: 9px; }
+  .btn-sm { padding: 9px 14px; font-size: 14px; border-radius: var(--radius); min-height: 40px; }
   .arrow { display: inline-block; transition: transform .2s ease; }
   .btn:hover .arrow { transform: translateX(3px); }
 
@@ -164,13 +167,13 @@
     0%, 100% { box-shadow: 0 0 0 4px rgba(14, 107, 61, 0.25); }
     50% { box-shadow: 0 0 0 8px rgba(14, 107, 61, 0); }
   }
-  .hero h1 { margin-top: 22px; }
+  .hero h1 { margin-top: 24px; }
   .hero h1 .accent { color: var(--green); }
   .hero h1 { font-weight: 900; }
-  .hero-sub { margin-top: 22px; font-size: 19px; color: var(--ink-2); max-width: 520px; line-height: 1.5; }
+  .hero-sub { margin-top: 24px; font-size: 19px; color: var(--ink-2); max-width: 520px; line-height: 1.5; }
   .hero-cta { margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap; }
   .hero-bullets {
-    margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line);
+    margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line);
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
   }
   .hero-bullet { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--ink-2); }
@@ -184,8 +187,10 @@
   .hero-visual { position: relative; aspect-ratio: 4/5; max-height: 640px; }
   .hero-collage { position: absolute; inset: 0; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); display: grid; grid-template-rows: 1.55fr 1fr; gap: 6px; background: var(--cream-2); }
   .hero-collage-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-  .hero-tile { position: relative; overflow: hidden; }
-  .hero-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .hero-tile { position: relative; overflow: hidden; background: linear-gradient(100deg, var(--cream-2) 30%, #eef1ea 50%, var(--cream-2) 70%); background-size: 200% 100%; animation: heroSkeleton 1.4s ease-in-out infinite; }
+  .hero-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; animation: heroImgIn .3s ease; }
+  @keyframes heroSkeleton { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+  @keyframes heroImgIn { from { opacity: 0; } to { opacity: 1; } }
   .hero-tile::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(21, 21, 21, 0.4) 100%); }
   .hero-tile .tile-label { position: absolute; bottom: 10px; left: 12px; z-index: 2; color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.06em; }
   .hero-photo .corner-tag {
@@ -243,8 +248,8 @@
   .sec-head { max-width: 720px; margin-bottom: 56px; }
   .sec-head .eyebrow { display: inline-flex; align-items: center; gap: 8px; }
   .sec-head .eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--ink-3); }
-  .sec-head h2 { margin-top: 18px; }
-  .sec-head p { margin-top: 18px; font-size: 19px; color: var(--ink-2); max-width: 580px; }
+  .sec-head h2 { margin-top: 16px; }
+  .sec-head p { margin-top: 16px; font-size: 19px; color: var(--ink-2); max-width: 580px; }
 
   /* ===== SERVICES (clean grid) ===== */
   #servicios { background: var(--cream); }
@@ -282,7 +287,7 @@
     transition: background .25s ease;
   }
   .srv-card:hover .srv-icon { background: #E2E8DC; }
-  .srv-icon svg { width: 22px; height: 22px; }
+  .srv-icon svg { width: 24px; height: 24px; }
   .srv-card h3 {
     font-size: 19px;
     font-weight: 700;
@@ -353,8 +358,8 @@
     transition: transform .3s ease;
   }
   .card:hover .card-icon { transform: scale(1.08) rotate(-3deg); }
-  .card-icon svg { width: 20px; height: 20px; }
-  .card h3 { margin-top: 18px; }
+  .card-icon svg { width: 24px; height: 24px; }
+  .card h3 { margin-top: 16px; }
   .card p { color: var(--ink-3); font-size: 14.5px; margin-top: 8px; }
   .card-arrow { margin-top: auto; align-self: flex-start; color: var(--ink-3); transition: color .2s ease, transform .2s ease; padding-top: 16px; }
   .card:hover .card-arrow { color: var(--green-deep); transform: translateX(4px); }
@@ -395,7 +400,7 @@
   #seguimiento .sec-head .eyebrow::before { background: var(--green); }
   #seguimiento .sec-head p { color: var(--ink-2); }
   .tracking-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 64px; align-items: center; }
-  .tracking-features { display: flex; flex-direction: column; gap: 14px; margin-top: 36px; }
+  .tracking-features { display: flex; flex-direction: column; gap: 14px; margin-top: 32px; }
   .tf {
     display: flex; gap: 16px; align-items: flex-start;
     padding: 18px; border-radius: 14px; background: white;
@@ -682,15 +687,16 @@
   .field.full { grid-column: 1 / -1; }
   .field label { font-size: 13px; font-weight: 600; color: var(--ink-2); min-height: 34px; display: flex; align-items: flex-end; line-height: 1.25; }
   .field input, .field select, .field textarea {
-    font: inherit; font-size: 14px; padding: 12px 14px; border-radius: 10px;
-    border: 1px solid var(--line); background: var(--cream);
+    font: inherit; font-size: 14px; padding: 12px 14px; border-radius: var(--radius);
+    border: 1px solid var(--line); background: var(--cream); min-height: 48px; box-sizing: border-box;
     color: var(--ink); transition: border-color .15s ease, background .15s ease;
   }
   .field input:focus, .field select:focus, .field textarea:focus {
     outline: none; border-color: var(--green); background: white;
     box-shadow: 0 0 0 4px var(--green-glow);
   }
-  .field textarea { resize: vertical; min-height: 80px; }
+  .field textarea { resize: vertical; min-height: 96px; }
+  .field input::placeholder, .field select::placeholder, .field textarea::placeholder { color: var(--ink-3); }
   .radio-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .radio {
     display: flex; align-items: center; gap: 12px; padding: 14px 16px;
@@ -701,7 +707,7 @@
   .radio input { accent-color: var(--green); width: 18px; height: 18px; }
   .radio span { font-size: 14px; font-weight: 500; }
   .form-submit { margin-top: 24px; display: flex; flex-direction: column-reverse; justify-content: space-between; align-items: stretch; flex-wrap: wrap; gap: 16px; }
-  .form-submit .btn { padding: 17px 28px; font-size: 16px; width: 100%; justify-content: center; }
+  .form-submit .btn { padding: 17px 28px; font-size: 16px; width: 100%; min-height: 56px; justify-content: center; }
   .form-submit .form-disclaimer { max-width: 100%; text-align: center; }
   .form-disclaimer { font-size: 12.5px; color: var(--ink-3); max-width: 320px; }
 
@@ -717,7 +723,7 @@
   footer a:hover { color: var(--cream); }
   .foot-brand .logo { color: var(--cream); }
   .foot-brand .logo small { color: #9a9a9a; }
-  .foot-brand p { margin-top: 18px; font-size: 14.5px; max-width: 320px; line-height: 1.55; }
+  .foot-brand p { margin-top: 16px; font-size: 14.5px; max-width: 320px; line-height: 1.55; }
   .foot-social { display: flex; gap: 10px; margin-top: 20px; }
   .foot-social a {
     width: 36px; height: 36px; border-radius: 9px;
@@ -727,7 +733,7 @@
   .foot-social a:hover { background: var(--green); border-color: var(--green); color: white; }
   .foot-social svg { width: 16px; height: 16px; }
   .foot-bottom {
-    margin-top: 64px; padding-top: 28px; border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 64px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.08);
     display: flex; justify-content: space-between; align-items: center; font-size: 13px;
     color: #9a9a9a;
   }
@@ -1025,7 +1031,7 @@
     background: white;
     border: 1px solid var(--line-2);
     border-radius: 14px;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     box-shadow: var(--shadow-sm);
   }
   .emb-tabs-wrap { position: relative; }
@@ -1042,9 +1048,10 @@
     letter-spacing: 0.08em;
   }
   .emb-tab:hover { color: var(--ink); background: var(--cream-2); }
+  .emb-tab:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
   .emb-tab.active {
-    background: var(--ink);
-    color: var(--cream);
+    background: var(--green);
+    color: white;
     box-shadow: 0 2px 6px rgba(0,0,0,0.12);
   }
 
@@ -1178,7 +1185,7 @@
 
   /* bottom CTA */
   .emb-cta {
-    margin-top: 36px;
+    margin-top: 32px;
     display: flex; gap: 18px; align-items: center;
     padding: 22px 28px;
     background: white;
@@ -1317,7 +1324,7 @@
   }
   .emb-quote-attr {
     display: block;
-    margin-top: 14px;
+    margin-top: 16px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
     color: rgba(255, 255, 255, 0.85);
@@ -1332,7 +1339,7 @@
     .emb-tabs { width: 100%; overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; -ms-overflow-style: none; scroll-snap-type: x proximity; background: none; border: none; box-shadow: none; padding: 0; gap: 8px; }
     .emb-tabs::-webkit-scrollbar { display: none; }
     .emb-tab { white-space: nowrap; padding: 10px 16px; scroll-snap-align: start; background: white; border: 1px solid var(--line-2); }
-    .emb-tab.active { border-color: var(--ink); }
+    .emb-tab.active { background: var(--green); color: white; border-color: var(--green); }
     .emb-tip-grid { grid-template-columns: 1fr; }
     .emb-panel-title { font-size: 22px; }
     .emb-quote p { font-size: 18px; }
@@ -1457,7 +1464,7 @@
 <!-- ============ HERO ============ -->
 <section class="hero" id="inicio" data-screen-label="Hero">
   <div class="wrap hero-grid">
-    <div class="reveal">
+    <div>
       <div class="badge">
         <span class="badge-dot"></span>
         <span>40 años · Familia Bongiovanni</span>
@@ -1478,7 +1485,7 @@
       </div>
     </div>
 
-    <div class="hero-visual reveal">
+    <div class="hero-visual">
       <div class="hero-collage">
         <div class="hero-tile">
           <div class="corner-tag">NUESTRA FLOTA · DESDE 1984</div>
@@ -1502,8 +1509,8 @@
   <div class="wrap">
     <div class="sec-head reveal" style="max-width: 720px; margin-bottom: 40px;">
       <span class="eyebrow">02 · Servicios</span>
-      <h2 style="font-size: clamp(32px, 4vw, 48px); margin-top: 14px;">Soluciones de transporte</h2>
-      <p style="margin-top: 14px; font-size: 17px;">Adaptamos nuestra logística a la necesidad específica de tu carga. Centros de recepción en Buenos Aires, Rosario y Jovita.</p>
+      <h2 style="font-size: clamp(32px, 4vw, 48px); margin-top: 16px;">Soluciones de transporte</h2>
+      <p style="margin-top: 16px; font-size: 17px;">Adaptamos nuestra logística a la necesidad específica de tu carga. Centros de recepción en Buenos Aires, Rosario y Jovita.</p>
     </div>
 
     <div class="srv-grid stagger">
@@ -1560,12 +1567,12 @@
   <div class="wrap">
     <div class="emp-hero reveal">
       <span class="eyebrow">¿ Tenés un comercio, industria o empresa?</span>
-      <h2 style="margin-top: 18px;">Soluciones logísticas para empresas que necesitan <em style="font-style: italic; color: var(--green); font-weight: 800;">envíos frecuentes</em></h2>
-      <p style="margin-top: 14px; font-size: 18px; max-width: 640px;">Acompañamos a comercios, distribuidores e industrias que necesitan mover mercadería todas las semanas entre Buenos Aires, Rosario y el sur de Córdoba.</p>
+      <h2 style="margin-top: 16px;">Soluciones logísticas para empresas que necesitan <em style="font-style: italic; color: var(--green); font-weight: 800;">envíos frecuentes</em></h2>
+      <p style="margin-top: 16px; font-size: 18px; max-width: 640px;">Acompañamos a comercios, distribuidores e industrias que necesitan mover mercadería todas las semanas entre Buenos Aires, Rosario y el sur de Córdoba.</p>
       <div class="emp-benefits">
-        <div class="emp-benefit"><span class="emp-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><span>Rutas programadas</span></div>
-        <div class="emp-benefit"><span class="emp-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-7.5 8-13a8 8 0 1 0-16 0c0 5.5 8 13 8 13z"/><circle cx="12" cy="9" r="2.5"/></svg></span><span>Seguimiento en tiempo real</span></div>
-        <div class="emp-benefit"><span class="emp-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span>Atención personalizada</span></div>
+        <div class="emp-benefit"><span class="emp-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><span>Rutas programadas</span></div>
+        <div class="emp-benefit"><span class="emp-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-7.5 8-13a8 8 0 1 0-16 0c0 5.5 8 13 8 13z"/><circle cx="12" cy="9" r="2.5"/></svg></span><span>Seguimiento en tiempo real</span></div>
+        <div class="emp-benefit"><span class="emp-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span>Atención personalizada</span></div>
       </div>
       <a href="#cotizar" class="btn btn-primary" style="margin-top: 32px;">Quiero mejorar mi logística <span class="arrow">→</span></a>
     </div>
@@ -1573,14 +1580,14 @@
     <div class="emp-sectors reveal">
       <p class="emp-sectors-label">Trabajamos con empresas de estos sectores</p>
       <div class="emp-grid">
-        <div class="emp-item"><span class="emp-item-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></span>Construcción</div>
-        <div class="emp-item"><span class="emp-item-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3l3 2 3-2 4 4-2 2v11H7V9L5 7z"/></svg></span>Indumentaria</div>
-        <div class="emp-item"><span class="emp-item-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="11" rx="1"/><path d="M2 19h20M9 19v2M15 19v2"/></svg></span>Tecnología</div>
-        <div class="emp-item"><span class="emp-item-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg></span>Hogar</div>
-        <div class="emp-item"><span class="emp-item-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C9 6 7 9 7 13a5 5 0 0 0 10 0c0-4-2-7-5-11z"/></svg></span>Agro</div>
-        <div class="emp-item"><span class="emp-item-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 17H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v12z"/><path d="M14 8h4l3 3v6h-7"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="17.5" cy="18.5" r="1.5"/></svg></span>Automotor</div>
-        <div class="emp-item"><span class="emp-item-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l4-3 4 3v11M13 21v-7h6v7"/></svg></span>Industria</div>
-        <div class="emp-item"><span class="emp-item-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="14" r="5"/><circle cx="6" cy="7" r="1.6"/><circle cx="18" cy="7" r="1.6"/><circle cx="9.5" cy="4.5" r="1.4"/><circle cx="14.5" cy="4.5" r="1.4"/></svg></span>Mascotas</div>
+        <div class="emp-item"><span class="emp-item-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></span>Construcción</div>
+        <div class="emp-item"><span class="emp-item-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3l3 2 3-2 4 4-2 2v11H7V9L5 7z"/></svg></span>Indumentaria</div>
+        <div class="emp-item"><span class="emp-item-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="11" rx="1"/><path d="M2 19h20M9 19v2M15 19v2"/></svg></span>Tecnología</div>
+        <div class="emp-item"><span class="emp-item-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg></span>Hogar</div>
+        <div class="emp-item"><span class="emp-item-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C9 6 7 9 7 13a5 5 0 0 0 10 0c0-4-2-7-5-11z"/></svg></span>Agro</div>
+        <div class="emp-item"><span class="emp-item-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 17H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v12z"/><path d="M14 8h4l3 3v6h-7"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="17.5" cy="18.5" r="1.5"/></svg></span>Automotor</div>
+        <div class="emp-item"><span class="emp-item-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l4-3 4 3v11M13 21v-7h6v7"/></svg></span>Industria</div>
+        <div class="emp-item"><span class="emp-item-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="14" r="5"/><circle cx="6" cy="7" r="1.6"/><circle cx="18" cy="7" r="1.6"/><circle cx="9.5" cy="4.5" r="1.4"/><circle cx="14.5" cy="4.5" r="1.4"/></svg></span>Mascotas</div>
       </div>
       <p class="emp-sectors-note">... y muchos otros rubros, adaptando cada envío a las necesidades de su operación.</p>
     </div>
@@ -1762,8 +1769,8 @@
   <div class="wrap">
     <div class="nos-header reveal">
       <span class="badge"><span class="badge-dot"></span> 05 · Nuestra historia</span>
-      <h2 style="margin-top: 18px;">Una empresa familiar <em style="font-style: italic; color: var(--green); font-weight: 800;">DE LOGÍSTICA</em> desde 1984</h2>
-      <p style="margin-top: 18px; color: var(--ink-2); font-size: 19px; max-width: 720px;">Más de 40 años conectando el sur de Córdoba con el resto del país. Dos generaciones de la familia Bongiovanni, una promesa que no cambia.</p>
+      <h2 style="margin-top: 16px;">Una empresa familiar <em style="font-style: italic; color: var(--green); font-weight: 800;">DE LOGÍSTICA</em> desde 1984</h2>
+      <p style="margin-top: 16px; color: var(--ink-2); font-size: 19px; max-width: 720px;">Más de 40 años conectando el sur de Córdoba con el resto del país. Dos generaciones de la familia Bongiovanni, una promesa que no cambia.</p>
     </div>
 
     <div class="nos-grid reveal">
@@ -1847,7 +1854,7 @@
       </div>
     </div>
 
-    <div class="emb-quote reveal" style="margin-top: 36px;">
+    <div class="emb-quote reveal" style="margin-top: 32px;">
       <p>«Tratamos cada envío como si fuera nuestro. Esa es la diferencia que la familia Bongiovanni viene haciendo desde hace más de cuarenta años.»</p>
       <span class="emb-quote-attr">— Familia Bongiovanni · Fundadores</span>
     </div>
@@ -1860,8 +1867,8 @@
     <!-- header -->
     <div class="emb-header reveal">
       <span class="badge"><span class="badge-dot"></span> 07 · Consejos</span>
-      <h2 style="margin-top: 18px;">¿Cómo embalar <em style="font-style: italic; color: var(--green); font-weight: 800;">tu envío?</em></h2>
-      <p style="margin-top: 18px; color: var(--ink-2); font-size: 19px; max-width: 720px;">El 98% de nuestros envíos llega sin daños. Cuando algo se rompe, casi siempre es por embalaje débil. Te dejamos lo que recomendamos en depósito según el tipo de carga.</p>
+      <h2 style="margin-top: 16px;">¿Cómo embalar <em style="font-style: italic; color: var(--green); font-weight: 800;">tu envío?</em></h2>
+      <p style="margin-top: 16px; color: var(--ink-2); font-size: 19px; max-width: 720px;">El 98% de nuestros envíos llega sin daños. Cuando algo se rompe, casi siempre es por embalaje débil. Te dejamos lo que recomendamos en depósito según el tipo de carga.</p>
     </div>
 
     <!-- tabs -->
@@ -2110,7 +2117,7 @@
   .gm-row a.rv:hover { color:var(--green-deep); text-decoration:underline; }
   .gm-chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
   .gm-chip { font-size:11px; font-weight:700; color:var(--green-deep); background:var(--green-soft); border-radius:999px; padding:4px 10px; }
-  .gm-cta { display:flex; gap:8px; margin-top:14px; }
+  .gm-cta { display:flex; gap:8px; margin-top:16px; }
   .gm-btn { flex:1; display:inline-flex; align-items:center; justify-content:center; gap:7px; font-weight:700; font-size:13.5px; border-radius:10px; padding:11px 12px; transition:transform .15s ease, box-shadow .15s ease; cursor:pointer; text-decoration:none; }
   .gm-btn svg { width:15px; height:15px; }
   .gm-btn-green { background:var(--green); color:#fff; box-shadow:0 6px 16px var(--green-glow); }
@@ -2145,9 +2152,9 @@
     <div class="cov-intro reveal" style="padding: 0px">
       <div style="width: 100%; max-width: 450px">
         <span class="eyebrow">— 08 · Corredor logístico</span>
-        <h2 style="margin-top: 18px; font-family: &quot;Artegra Sans&quot;; text-align: left">NUESTRA RED
+        <h2 style="margin-top: 16px; font-family: &quot;Artegra Sans&quot;; text-align: left">NUESTRA RED
 DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍSTICA</em></h2>
-        <p style="margin-top:18px; color: var(--ink-2); font-size: 18px;">Tres centros de recepción y dos viajes semanales que conectan más de 17 localidades. Llegamos a pueblos donde otros no llegan — y nos ajustamos a tus horarios.</p>
+        <p style="margin-top:16px; color: var(--ink-2); font-size: 18px;">Tres centros de recepción y dos viajes semanales que conectan más de 17 localidades. Llegamos a pueblos donde otros no llegan — y nos ajustamos a tus horarios.</p>
         <div class="cov-stats">
           <div class="stat"><div class="stat-num"><span class="count" data-prefix="+" data-target="40">+0</span><span class="unit">años</span></div><div class="stat-label">Familia Bongiovanni desde 1984</div></div>
           <div class="stat"><div class="stat-num"><span class="count" data-prefix="+" data-suffix="k" data-target="20">+0k</span><span class="unit">env/mes</span></div><div class="stat-label">Paquetes, pallets y cargas</div></div>
@@ -2352,8 +2359,8 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
   <div class="wrap quote-grid">
     <div class="quote-side reveal">
       <span class="eyebrow">09 · Cotizá tu envío</span>
-      <h2 style="margin-top:18px;">Cotizá tu envío<br/>en minutos</h2>
-      <p style="margin-top:18px; color: var(--ink-2); font-size: 18px;">Respondemos cotizaciones en el día. Te contestamos por mail o WhatsApp, lo que prefieras.</p>
+      <h2 style="margin-top:16px;">Cotizá tu envío<br/>en minutos</h2>
+      <p style="margin-top:16px; color: var(--ink-2); font-size: 18px;">Respondemos cotizaciones en el día. Te contestamos por mail o WhatsApp, lo que prefieras.</p>
 
       <div class="quote-aside">
         <h4>¿Preferís hablar con alguien?</h4>
@@ -2446,8 +2453,8 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
           <img class="logo-img" src="assets/logo-trebol.png" alt="Transporte Expreso El Trébol" />
         </a>
         <p style="font-style: italic; color: #d4d6d8; font-size: 16px;">«La tranquilidad de saber que tu envío siempre llega, y siempre llega bien.»</p>
-        <p style="margin-top: 14px; font-size: 13.5px; color: #9a9a9a;">Razón social: OTH SAS · CUIT 30-71908479-2</p>
-        <div style="margin-top:14px;display:flex;align-items:center;gap:10px" class="foot-qr-row"><image-slot id="afip-qr" shape="rect" radius="6" placeholder="QR AFIP" style="width:56px;height:56px;flex-shrink:0"></image-slot><span style="font-size:12px;color:#9a9a9a">Datos fiscales</span></div>
+        <p style="margin-top: 16px; font-size: 13.5px; color: #9a9a9a;">Razón social: OTH SAS · CUIT 30-71908479-2</p>
+        <div style="margin-top:16px;display:flex;align-items:center;gap:10px" class="foot-qr-row"><image-slot id="afip-qr" shape="rect" radius="6" placeholder="QR AFIP" style="width:56px;height:56px;flex-shrink:0"></image-slot><span style="font-size:12px;color:#9a9a9a">Datos fiscales</span></div>
       </div>
       <div>
         <h5>Navegar</h5>
