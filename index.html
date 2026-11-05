@@ -1513,7 +1513,7 @@ h2{font-size:42px!important}
 .hero-collage-bottom{display:grid!important;grid-template-columns:1fr!important;grid-template-rows:1fr 1fr;gap:6px!important}
 .srv-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))}
 .srv-wide{grid-column:1/-1}
-.srv-wide{flex-direction:row!important}.srv-wide-content{flex:1}.srv-wide-img{flex:1;aspect-ratio:auto}
+.srv-wide{flex-direction:row!important;align-items:stretch!important}.srv-wide-content{flex:1;align-self:center}.srv-wide-img{flex:1;aspect-ratio:auto;position:relative;min-height:0!important;overflow:hidden}.srv-wide-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
 .srv-callout .btn{width:auto!important}
 .emp-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}
 #proceso .steps{display:flex!important;flex-direction:column;max-width:none;margin-top:8px!important}
@@ -1532,7 +1532,7 @@ h2{font-size:42px!important}
 .emp-benefits{display:grid!important;grid-template-columns:repeat(3,auto)!important;justify-content:space-between;gap:16px!important}
 .emp-benefit{display:flex!important;align-items:center;gap:10px!important;min-width:0;font-size:15px!important;font-weight:500;white-space:nowrap}
 .emp-benefit .emp-ico{width:40px!important;height:40px!important;flex:none}
-.emp-hero .btn{width:auto!important;display:flex!important;width:max-content!important;margin-left:auto!important;margin-right:auto!important;padding-left:28px!important;padding-right:28px!important}
+.emp-hero .btn{display:inline-flex!important;width:max-content!important;margin-left:0!important;margin-right:0!important;padding-left:28px!important;padding-right:28px!important}
 #nosotros .nos-highlights{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;justify-content:space-between!important;gap:16px!important;width:100%!important}
 #nosotros .nos-hl{flex:0 1 24.2%!important;width:auto!important;height:auto!important;min-width:0;padding:16px 18px!important;border-radius:14px}
 #nosotros .nos-hl-num{font-size:30px!important}
@@ -1551,6 +1551,15 @@ h2{font-size:42px!important}
 #cobertura .gm-legend{gap:6px 12px!important;font-size:11px!important;margin-top:12px!important;flex:none;flex-wrap:wrap!important}
 #cobertura .gm-legend .li{white-space:nowrap}
 #cobertura .gm-legend .meta{margin-left:auto!important;white-space:nowrap}
+.hero-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)!important;gap:36px!important;align-items:stretch!important}
+.hero h1{font-size:clamp(44px,5.6vw,60px)!important}
+.hero-sub{font-size:16px!important}
+.hero-cta{flex-direction:row!important;flex-wrap:wrap}
+.hero-bullets{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.hero-visual{aspect-ratio:auto!important;max-height:none!important;height:auto!important;min-height:460px}
+.hero-collage{grid-template-columns:1fr!important;grid-template-rows:1.55fr 1fr!important;gap:6px!important;height:100%!important}
+.hero-collage-bottom{display:grid!important;grid-template-columns:1fr 1fr!important;grid-template-rows:1fr!important;gap:6px!important}
+.hero-tile img{width:100%;height:100%;object-fit:cover}
 }
 @media (max-width:560px), (min-width:561px) and (max-width:1024px) and (orientation:portrait){
 #nosotros .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
@@ -1584,12 +1593,19 @@ h2{font-size:42px!important}
 .m-acc>.m-acc-head::after{content:"+";margin-left:auto;font-size:22px;line-height:1;color:var(--green-deep)}
 .m-acc.open>.m-acc-head::after{content:"\2212"}
 .m-acc:not(.open)>:not(.m-acc-head){display:none!important}
-#nosotros .nos-collage,#nosotros .nos-historia img{aspect-ratio:4/3!important}
+#nosotros .nos-right{display:flex!important;flex-direction:column}
+#nosotros .nos-collage{grid-column:1/-1!important;display:grid!important;grid-template-columns:1.3fr 1fr;grid-template-rows:1fr 1fr;gap:6px;aspect-ratio:16/10!important;overflow:hidden}
+#nosotros .nos-collage>img{display:block!important;width:100%!important;height:100%!important;min-height:0;object-fit:cover;border-radius:0}
+#nosotros .nos-collage>img:first-child{grid-row:1/3}
+#nosotros .nos-historia{display:none!important}
+#cobertura .cov-intro>div:first-child,#cobertura .gm-card{max-width:none!important;width:100%!important}
+}
+@media (min-width:561px) and (max-width:1024px) and (orientation:portrait){
+#nosotros .nos-collage{aspect-ratio:16/9!important}
+#nosotros .nos-historia img{aspect-ratio:4/3!important}
 #nosotros .nos-story p{-webkit-line-clamp:4}
 #nosotros .nos-highlights{grid-template-columns:repeat(3,minmax(0,1fr))!important}
 #nosotros .nos-hl:last-child{grid-column:auto}
-#nosotros .nos-right{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))}
-#nosotros .nos-right>:not(.nos-value-card){grid-column:1/-1}
 #nosotros .nos-mv{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 </style>
@@ -1677,9 +1693,9 @@ h2{font-size:42px!important}
       <a href="#cobertura" data-link="cobertura">Cobertura</a>
     </div>
     <div class="nav-cta">
-      <a href="https://eltrebol.mrpaquete.com.ar/login" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Ingresar clientes</a>
+      <a href="https://eltrebol.mrpaquete.com.ar/login" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Acceso clientes</a>
       <a href="#cotizar" class="btn btn-primary btn-sm">Cotizar <span class="arrow">→</span></a>
-      <a href="https://eltrebol.mrpaquete.com.ar/login" target="_blank" rel="noopener" class="nav-icon-btn" aria-label="Ingresar clientes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+      <a href="https://eltrebol.mrpaquete.com.ar/login" target="_blank" rel="noopener" class="nav-icon-btn" aria-label="Acceso clientes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
       <a href="#cotizar" class="nav-icon-btn primary" aria-label="Cotizar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
     </div>
   </div>
@@ -1694,12 +1710,12 @@ h2{font-size:42px!important}
       <!--
         Reemplazar este placeholder por el video real. Dos opciones:
         (a) Archivo local:
-            <video src="assets/video/embalaje.mp4" poster="assets/img/embalaje.jpg" controls autoplay></video>
+            <video src="assets/video/embalaje.mp4" poster="assets/img/embalaje-pallets.png" controls autoplay></video>
         (b) YouTube / Vimeo:
             <iframe src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       -->
       <div class="video-placeholder">
-        <img src="assets/img/embalaje.jpg" alt="Tutorial de embalaje" class="video-poster" />
+        <img src="assets/img/embalaje-pallets.png" alt="Tutorial de embalaje" class="video-poster" />
         <div class="video-overlay">
           <div class="play-btn">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><polygon points="6 4 20 12 6 20"/></svg>
@@ -1772,8 +1788,8 @@ h2{font-size:42px!important}
   <div class="wrap">
     <div class="sec-head reveal" style="max-width: 720px; margin-bottom: 40px;">
       <span class="eyebrow">02 · Servicios</span>
-      <h2 style="font-size: clamp(32px, 4vw, 48px); margin-top: 16px;">Soluciones de transporte</h2>
-      <p style="margin-top: 16px; font-size: 17px;">Adaptamos nuestra logística a la necesidad específica de tu carga. Centros de recepción en Buenos Aires, Rosario y Jovita.</p>
+      <h2 class="h2-1l" style="font-size: clamp(32px, 4vw, 48px); margin-top: 16px;">Soluciones de transporte</h2>
+      <p style="margin-top: 16px; font-size: 17px;">Adaptamos nuestra logística a la necesidad específica de tu mercadería. Centros de recepción en Buenos Aires, Rosario y Jovita.</p>
     </div>
 
     <div class="srv-grid stagger">
@@ -1797,7 +1813,7 @@ h2{font-size:42px!important}
         <div class="srv-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="7" y1="14" x2="9" y2="14"/></svg>
         </div>
-        <h3>Contrareembolsos</h3>
+        <h3>Contrarreembolsos</h3>
         <p>Gestión segura de cobros en destino para facilitar tus operaciones comerciales.</p>
       </div>
 
@@ -1807,10 +1823,24 @@ h2{font-size:42px!important}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.3 7 12 12 20.7 7"/><line x1="12" y1="22" x2="12" y2="12"/></svg>
           </div>
           <h3>Cargas generales</h3>
-          <p style="line-height: 1.5;">Transporte de todo tipo de mercadería, pallets y bultos pesados con equipamiento especializado. Hasta semiremolque completo (13,60m).</p>
+          <p style="line-height: 1.5;">Transporte de todo tipo de mercadería, pallets y bultos pesados con equipamiento especializado. Hasta semirremolque completo (13,60 m).</p>
         </div>
-        <div class="srv-wide-img">
-          <img src="assets/img/cargas-generales.jpg" alt="Camión cargado de mercadería en depósito de Expreso El Trébol" />
+        <div class="srv-wide-img srv-slides">
+          <img class="srv-slide is-on" src="assets/img/cargas/carga-01.jpeg" style="object-position:51% 17%" alt="Camión con pallets de mercadería embolsada" loading="lazy" />
+          <img class="srv-slide" src="assets/img/cargas/carga-02.jpeg" style="object-position:54% 32%" alt="Carga de pallets con autoelevador" loading="lazy" />
+          <img class="srv-slide" src="assets/img/cargas/carga-03.jpeg" style="object-position:54% 26%" alt="Acoplado con caños de gran longitud" loading="lazy" />
+          <img class="srv-slide" src="assets/img/cargas/carga-04.jpeg" style="object-position:48% 41%" alt="Traslado de autoelevador" loading="lazy" />
+          <img class="srv-slide" src="assets/img/cargas/carga-05.jpeg" style="object-position:52% 39%" alt="Carga de áridos con pala cargadora" loading="lazy" />
+          <img class="srv-slide" src="assets/img/cargas/carga-06.jpeg" style="object-position:54% 54%" alt="Acoplado con fardos de cartón" loading="lazy" />
+          <img class="srv-slide" src="assets/img/cargas/carga-07.jpeg" style="object-position:49% 57%" alt="Camión y acoplado con fardos" loading="lazy" />
+          <img class="srv-slide" src="assets/img/cargas/carga-08.jpeg" style="object-position:47% 53%" alt="Fardos de cartón para reciclaje" loading="lazy" />
+          <img class="srv-slide" src="assets/img/cargas/carga-09.jpeg" style="object-position:50% 51%" alt="Carga de piedra en cantera" loading="lazy" />
+          <img class="srv-slide" src="assets/img/cargas/carga-10.jpeg" style="object-position:49% 8%" alt="Carga de arena con pala cargadora" loading="lazy" />
+          <img class="srv-slide" src="assets/img/cargas/carga-11.jpeg" style="object-position:53% 35%" alt="Carga de piedra partida" loading="lazy" />
+          <img class="srv-slide" src="assets/img/cargas/carga-12.jpeg" style="object-position:55% 26%" alt="Pallets de mercadería con autoelevador" loading="lazy" />
+          <img class="srv-slide" src="assets/img/cargas/carga-13.jpeg" style="object-position:49% 26%" alt="Carga de papel higiénico paletizado" loading="lazy" />
+          <img class="srv-slide" src="assets/img/cargas/carga-14.jpeg" style="object-position:53% 34%" alt="Carga de equipos industriales" loading="lazy" />
+          <img class="srv-slide" src="assets/img/cargas/carga-15.jpeg" style="object-position:54% 16%" alt="Bolsas paletizadas en camión" loading="lazy" />
         </div>
       </div>
     </div>
@@ -1829,7 +1859,7 @@ h2{font-size:42px!important}
 <section id="empresas" data-screen-label="Empresas" style="padding: 132px 0 100px; background: #F1F5EE; border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2);">
   <div class="wrap">
     <div class="emp-hero reveal">
-      <span class="eyebrow">¿ Tenés un comercio, industria o empresa?</span>
+      <span class="eyebrow">¿Tenés un comercio, industria o empresa?</span>
       <h2 style="margin-top: 16px;">Soluciones logísticas para empresas que necesitan <em style="font-style: italic; color: var(--green); font-weight: 800;">envíos frecuentes</em></h2>
       <p style="margin-top: 16px; font-size: 18px; max-width: 640px;">Acompañamos a comercios, distribuidores e industrias que necesitan mover mercadería todas las semanas entre Buenos Aires, Rosario y el sur de Córdoba.</p>
       <div class="emp-benefits">
@@ -1883,7 +1913,7 @@ h2{font-size:42px!important}
     <div class="reveal">
       <div class="sec-head" style="margin-bottom: 0;">
         <span class="eyebrow">03 · Seguimiento en vivo</span>
-        <h2>Seguí tu envío<br/>en tiempo real</h2>
+        <h2 class="h2-tab1l">Seguí tu envío<br class="br-tab"/> en tiempo real</h2>
         <p>Apenas recibimos tu mercadería en origen te llega un mail con el remito digitalizado adjunto. A partir de ahí seguís el recorrido en cada etapa, sin tener que llamar.</p>
       </div>
 
@@ -1894,7 +1924,7 @@ h2{font-size:42px!important}
         </div>
         <div class="tf">
           <span class="tf-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-          <div><h4>Seguimiento en tiempo real</h4><p>Consultá el estado y ubicación de tu envío desde cualquier dispositivo.</p></div>
+          <div><h4>Seguimiento en tiempo real</h4><p>Consultá el estado y la ubicación de tu envío desde cualquier dispositivo.</p></div>
         </div>
         <div class="tf">
           <span class="tf-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
@@ -1904,8 +1934,8 @@ h2{font-size:42px!important}
           <span class="tf-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"/></svg></span>
           <div style="width:100%">
             <h4>Así procesamos tu envío</h4>
-            <p>Muy pocos transportes pesan, miden y fotografían tu mercadería de forma automática al recibirla. Un operario la procesa y el cliente recibe la notificación con la foto en su mail — todo en menos de un minuto.</p>
-            <div class="tf-video"><span class="vp-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"/></svg></span><span class="tf-video-label">Video · proceso de recepción</span><span class="tf-video-expand" onclick="document.getElementById('trackingVideoModal').classList.add('open')" role="button" aria-label="Agrandar video"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></span></div>
+            <p>Muy pocos transportes pesan, miden y fotografían tu mercadería de forma automática al recibirla. Un operario la procesa y recibís la notificación con la foto en tu mail — todo en menos de un minuto.</p>
+            <div class="tf-video"><span class="vp-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"/></svg></span><span class="tf-video-label">Video · Proceso de recepción</span><span class="tf-video-expand" onclick="document.getElementById('trackingVideoModal').classList.add('open')" role="button" aria-label="Agrandar video"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></span></div>
           </div>
         </div>
       </div>
@@ -1932,12 +1962,12 @@ h2{font-size:42px!important}
         <p class="mk-greet">Hola <strong>Ejemplo</strong>, tu envío <strong>13327</strong> de <strong>Nombre REMITENTE</strong> está siendo procesado. Pronto iniciará el circuito de entrega.</p>
         <div class="mk-detail">
           <div class="mk-drow"><span class="mk-dk">Número de remito</span><span class="mk-dv">3938-63028</span></div>
-          <div class="mk-drow"><span class="mk-dk">Paquetes</span><span class="mk-dv">Paquetes Mediano x 1</span></div>
-          <div class="mk-drow"><span class="mk-dk">Destinatario</span><span class="mk-dv">Ejemplo<br/>Roque Saenz Peña 152 (Jovita)<br/>Tel.: Sin informar</span></div>
+          <div class="mk-drow"><span class="mk-dk">Paquetes</span><span class="mk-dv">Paquete mediano x 1</span></div>
+          <div class="mk-drow"><span class="mk-dk">Destinatario</span><span class="mk-dv">Ejemplo<br/>Roque Sáenz Peña 152 (Jovita)<br/>Tel.: Sin informar</span></div>
           <div class="mk-drow"><span class="mk-dk">Observaciones</span><span class="mk-dv">Sin observaciones</span></div>
           <div class="mk-seguir"><span class="mk-seguir-btn">SEGUIR ENVÍO</span></div>
         </div>
-        <p class="mk-foot">Por favor, no respondas este correo, ya que el mismo no está habilitado para recibir mensajes. Por consultas y/o reclamos, podés comunicarte a nuestro centro de atención telefónica (011 5193-2494).</p>
+        <p class="mk-foot">Por favor, no respondas este mail, ya que el mismo no está habilitado para recibir mensajes. Por consultas y/o reclamos, podés comunicarte a nuestro centro de atención telefónica (011 5193-2494).</p>
         </div>
       </div>
 
@@ -1950,7 +1980,7 @@ h2{font-size:42px!important}
           </div>
           <div class="mk-tl-item">
             <span class="mk-tl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="5" x="2" y="4" rx="1.5"/><path d="M4 9v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9"/><path d="M9.5 13h5"/></svg></span>
-            <div class="mk-tl-txt"><p class="mk-tl-title">Paquete preparado, pronto viajará hacia el <strong>centro de distribución Jovita</strong></p><p class="mk-tl-sub">Viaje planificado para el 14/05/2026</p></div>
+            <div class="mk-tl-txt"><p class="mk-tl-title">Paquete preparado, pronto viajará hacia el <strong>centro de distribución de Jovita</strong></p><p class="mk-tl-sub">Viaje planificado para el 14/05/2026</p></div>
           </div>
           <div class="mk-tl-item">
             <span class="mk-tl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></span>
@@ -1984,7 +2014,7 @@ h2{font-size:42px!important}
 <div class="wrap trk-mob">
 <div class="sec-head trk-head reveal">
 <span class="eyebrow">03 · Seguimiento en vivo</span>
-<h2>Seguí tu envío<br/>en tiempo real</h2>
+<h2 class="h2-tab1l">Seguí tu envío<br class="br-tab"/> en tiempo real</h2>
 <p>Apenas recibimos tu mercadería en origen te llega un mail con el remito digitalizado adjunto. A partir de ahí seguís el recorrido en cada etapa, sin tener que llamar.</p>
 </div>
 <div class="trk-grid">
@@ -2009,17 +2039,17 @@ h2{font-size:42px!important}
         <p class="mk-greet">Hola <strong>Ejemplo</strong>, tu envío <strong>13327</strong> de <strong>Nombre REMITENTE</strong> está siendo procesado. Pronto iniciará el circuito de entrega.</p>
         <div class="mk-detail">
           <div class="mk-drow"><span class="mk-dk">Número de remito</span><span class="mk-dv">3938-63028</span></div>
-          <div class="mk-drow"><span class="mk-dk">Paquetes</span><span class="mk-dv">Paquetes Mediano x 1</span></div>
-          <div class="mk-drow"><span class="mk-dk">Destinatario</span><span class="mk-dv">Ejemplo<br/>Roque Saenz Peña 152 (Jovita)<br/>Tel.: Sin informar</span></div>
+          <div class="mk-drow"><span class="mk-dk">Paquetes</span><span class="mk-dv">Paquete mediano x 1</span></div>
+          <div class="mk-drow"><span class="mk-dk">Destinatario</span><span class="mk-dv">Ejemplo<br/>Roque Sáenz Peña 152 (Jovita)<br/>Tel.: Sin informar</span></div>
           <div class="mk-drow"><span class="mk-dk">Observaciones</span><span class="mk-dv">Sin observaciones</span></div>
           <div class="mk-seguir"><span class="mk-seguir-btn">SEGUIR ENVÍO</span></div>
         </div>
-        <p class="mk-foot">Por favor, no respondas este correo, ya que el mismo no está habilitado para recibir mensajes. Por consultas y/o reclamos, podés comunicarte a nuestro centro de atención telefónica (011 5193-2494).</p>
+        <p class="mk-foot">Por favor, no respondas este mail, ya que el mismo no está habilitado para recibir mensajes. Por consultas y/o reclamos, podés comunicarte a nuestro centro de atención telefónica (011 5193-2494).</p>
         </div>
       </div></div>
 </article>
 <article class="trk-mod trk-m2 reveal">
-<div class="trk-txt"><span class="trk-num">02</span><h3>Seguimiento en tiempo real</h3><p>Consultá el estado y ubicación de tu envío desde cualquier dispositivo.</p></div>
+<div class="trk-txt"><span class="trk-num">02</span><h3>Seguimiento en tiempo real</h3><p>Consultá el estado y la ubicación de tu envío desde cualquier dispositivo.</p></div>
 <div class="trk-vis"><div class="mk-track">
         <div class="mk-tl">
           <div class="mk-tl-item">
@@ -2028,7 +2058,7 @@ h2{font-size:42px!important}
           </div>
           <div class="mk-tl-item">
             <span class="mk-tl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="5" x="2" y="4" rx="1.5"/><path d="M4 9v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9"/><path d="M9.5 13h5"/></svg></span>
-            <div class="mk-tl-txt"><p class="mk-tl-title">Paquete preparado, pronto viajará hacia el <strong>centro de distribución Jovita</strong></p><p class="mk-tl-sub">Viaje planificado para el 14/05/2026</p></div>
+            <div class="mk-tl-txt"><p class="mk-tl-title">Paquete preparado, pronto viajará hacia el <strong>centro de distribución de Jovita</strong></p><p class="mk-tl-sub">Viaje planificado para el 14/05/2026</p></div>
           </div>
           <div class="mk-tl-item">
             <span class="mk-tl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></span>
@@ -2058,7 +2088,7 @@ h2{font-size:42px!important}
 <div class="trk-txt"><span class="trk-num">03</span><h3>Geolocalización en ruta</h3><p>Reportes de vehículos en tiempo real durante todo el recorrido.</p></div>
 </article>
 <article class="trk-mod trk-m4 reveal">
-<div class="trk-txt"><span class="trk-num">04</span><h3>Así procesamos tu envío</h3><p>Muy pocos transportes pesan, miden y fotografían tu mercadería de forma automática al recibirla. Un operario la procesa y el cliente recibe la notificación con la foto en su mail — todo en menos de un minuto.</p></div>
+<div class="trk-txt"><span class="trk-num">04</span><h3>Así procesamos tu envío</h3><p>Muy pocos transportes pesan, miden y fotografían tu mercadería de forma automática al recibirla. Un operario la procesa y recibís la notificación con la foto en tu mail — todo en menos de un minuto.</p></div>
 <div class="tf-video"><span class="vp-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"/></svg></span><span class="tf-video-label">Video · Proceso de recepción</span><span class="tf-video-expand" onclick="document.getElementById('trackingVideoModal').classList.add('open')" role="button" aria-label="Agrandar video"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></span></div>
 </article>
 </div>
@@ -2070,7 +2100,7 @@ h2{font-size:42px!important}
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">04 · Cómo funciona</span>
-      <h2>Cinco pasos, cero sorpresas</h2>
+      <h2 class="h2-1l">Cinco pasos, cero sorpresas</h2>
       <p>Un proceso simple, transparente y diseñado para que sepas dónde está tu envío en todo momento.</p>
     </div>
 
@@ -2090,13 +2120,13 @@ h2{font-size:42px!important}
       <div class="step">
         <div class="step-num">PASO 03</div>
         <h3>Despachamos</h3>
-        <p>Te mandamos por mail el remito digital. Empezás a seguir el envío.</p>
+        <p>Te enviamos por mail el remito digital y podés comenzar a seguir tu envío.</p>
         <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 17H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v12z"/><path d="M14 8h4l3 3v6h-7"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="17.5" cy="18.5" r="1.5"/></svg></div>
       </div>
       <div class="step">
         <div class="step-num">PASO 04</div>
         <h3>Viaja a destino</h3>
-        <p>2 viajes semanales BA · Rosario · Jovita y sur de Córdoba.</p>
+        <p>2 viajes semanales BA · Rosario · Jovita y el sur de Córdoba.</p>
         <div class="step-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
       </div>
       <div class="step">
@@ -2128,7 +2158,7 @@ h2{font-size:42px!important}
         </div>
         <div class="nos-story">
           <h3 class="nos-story-title">De Jovita al país</h3>
-          <p>Expreso El Trébol nació hace más de 40 años, fundada por <strong>Edgardo “Chiquitín” Bongiovanni</strong> y su hermano <strong>Enrique “Quique”</strong>, ganándose la confianza de clientes y vecinos en cada envío.</p>
+          <p>Expreso El Trébol nació hace más de 40 años, fundado por <strong>Edgardo “Chiquitín” Bongiovanni</strong> y su hermano <strong>Enrique “Quique”</strong>, ganándose la confianza de clientes y vecinos en cada envío.</p>
           <p>Hoy, los hijos de Edgardo continúan su legado, potenciando el servicio con innovación tecnológica en la operación y en el procesamiento de la información — transportando mensualmente más de 20.000 paquetes, pallets y cargas generales.</p>
         </div>
       </div>
@@ -2139,7 +2169,7 @@ h2{font-size:42px!important}
         <div class="nos-value-card">
           <div class="nos-value-num">01</div>
           <h4>Responsabilidad</h4>
-          <p>Cada paquete que entra al depósito viaja como si fuera nuestro. Si decimos un día, es un día.</p>
+          <p>Cada envío que entra al depósito viaja como si fuera nuestro. Si decimos un día, es un día.</p>
         </div>
         <div class="nos-value-card">
           <div class="nos-value-num">02</div>
@@ -2195,7 +2225,7 @@ h2{font-size:42px!important}
           </span>
           <h4>Visión</h4>
         </div>
-        <p>Transformar la logística regional en un servicio rápido, seguro, transparente y digital, expandiendo nuestra cobertura y generando confianza en cada envío sin dejar de lado la atención personalizada por nuestros colaboradores.</p>
+        <p>Transformar la logística regional en un servicio rápido, seguro, transparente y digital, expandiendo nuestra cobertura y generando confianza en cada envío sin dejar de lado la atención personalizada de nuestros colaboradores.</p>
       </div>
     </div>
 
@@ -2212,8 +2242,8 @@ h2{font-size:42px!important}
     <!-- header -->
     <div class="emb-header reveal">
       <span class="badge"><span class="badge-dot"></span> 07 · Consejos</span>
-      <h2 style="margin-top: 16px;">¿Cómo embalar <em style="font-style: italic; color: var(--green); font-weight: 800;">tu envío?</em></h2>
-      <p style="margin-top: 16px; color: var(--ink-2); font-size: 19px; max-width: 720px;">El 98% de nuestros envíos llega sin daños. Cuando algo se rompe, casi siempre es por embalaje débil. Te dejamos lo que recomendamos en depósito según el tipo de carga.</p>
+      <h2 class="h2-1l" style="margin-top: 16px;">¿Cómo embalar <em style="font-style: italic; color: var(--green); font-weight: 800;">tu envío?</em></h2>
+      <p style="margin-top: 16px; color: var(--ink-2); font-size: 19px; max-width: 720px;">El 98% de nuestros envíos llega sin daños. Cuando algo se rompe, casi siempre es por embalaje débil. Te dejamos lo que recomendamos en depósito según el tipo de mercadería.</p>
     </div>
 
     <!-- tabs -->
@@ -2236,7 +2266,7 @@ h2{font-size:42px!important}
           <div class="emb-tip-grid">
             <div class="emb-tip-card">
               <span class="emb-tip-num">01</span>
-              <h4>Envolvé por protección</h4>
+              <h4>Envolvé para proteger</h4>
               <p>Burbuja o espuma individual para cada artículo. Las partes salientes (asas, picos, esquinas) reforzadas aparte.</p>
             </div>
             <div class="emb-tip-card">
@@ -2252,13 +2282,13 @@ h2{font-size:42px!important}
             <div class="emb-tip-card">
               <span class="emb-tip-num">04</span>
               <h4>Sellá correctamente</h4>
-              <p>Cinta de embalar gruesa formando una H en las uniones, arriba y abajo. Sumá pegatinas "Frágil" bien visibles.</p>
+              <p>Cinta de embalar gruesa formando una H en las uniones, arriba y abajo. Sumá etiquetas "Frágil" bien visibles.</p>
             </div>
           </div>
         </div>
 
         <div class="emb-panel" data-panel="general">
-          <h3 class="emb-panel-title">Embalaje para carga <span style="color: var(--green);">general</span></h3>
+          <h3 class="emb-panel-title">Embalaje para mercadería <span style="color: var(--green);">general</span></h3>
           <p class="emb-panel-sub">Para mercadería estándar de comercio y e-commerce. Lo básico que no falla.</p>
           <div class="emb-tip-grid">
             <div class="emb-tip-card">
@@ -2285,7 +2315,7 @@ h2{font-size:42px!important}
         </div>
 
         <div class="emb-panel" data-panel="pesada">
-          <h3 class="emb-panel-title">Embalaje para carga <span style="color: var(--green);">pesada</span></h3>
+          <h3 class="emb-panel-title">Embalaje para mercadería <span style="color: var(--green);">pesada</span></h3>
           <p class="emb-panel-sub">Para mercadería con peso elevado, donde los refuerzos son obligatorios.</p>
           <div class="emb-tip-grid">
             <div class="emb-tip-card">
@@ -2312,7 +2342,7 @@ h2{font-size:42px!important}
         </div>
 
         <div class="emb-panel" data-panel="apilable">
-          <h3 class="emb-panel-title">Embalaje para carga <span style="color: var(--green);">apilable</span></h3>
+          <h3 class="emb-panel-title">Embalaje para mercadería <span style="color: var(--green);">apilable</span></h3>
           <p class="emb-panel-sub">Para mercadería que viaja en pallets o se apila en depósito y en el camión.</p>
           <div class="emb-tip-grid">
             <div class="emb-tip-card">
@@ -2333,7 +2363,7 @@ h2{font-size:42px!important}
             <div class="emb-tip-card">
               <span class="emb-tip-num">04</span>
               <h4>Señalización clara</h4>
-              <p>Indicá "No apilar" si corresponde. Etiquetá la carga con remito y destinatario en cara visible.</p>
+              <p>Indicá "No apilar" si corresponde. Etiquetá la mercadería con remito y destinatario en cara visible.</p>
             </div>
           </div>
         </div>
@@ -2352,12 +2382,12 @@ h2{font-size:42px!important}
             <li><span class="x">×</span><span>Cajas reutilizadas en mal estado</span></li>
             <li><span class="x">×</span><span>Cinta insuficiente o de mala calidad</span></li>
             <li><span class="x">×</span><span>Espacios vacíos sin rellenar</span></li>
-            <li><span class="x">×</span><span>Etiquetas poco visibles o pegadas mal</span></li>
+            <li><span class="x">×</span><span>Etiquetas poco visibles o mal pegadas</span></li>
             <li><span class="x">×</span><span>Cargas mal distribuidas</span></li>
           </ul>
         </div>
         <div class="emb-img">
-          <img src="assets/img/embalaje.jpg" alt="Mercadería embalada y cargada en el camión" />
+          <img src="assets/img/embalaje-pallets.png" alt="Pallets embalados y cargados en el camión" style="object-fit:cover;object-position:50% 45%" />
         </div>
       </aside>
     </div>
@@ -2384,12 +2414,12 @@ h2{font-size:42px!important}
           <!--
             Reemplazar este placeholder por el video real. Dos opciones:
             (a) Archivo local:
-                <video src="assets/video/embalaje.mp4" poster="assets/img/embalaje.jpg" controls autoplay></video>
+                <video src="assets/video/embalaje.mp4" poster="assets/img/embalaje-pallets.png" controls autoplay></video>
             (b) YouTube / Vimeo:
                 <iframe src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
           -->
           <div class="video-placeholder">
-            <img src="assets/img/embalaje.jpg" alt="Tutorial de embalaje" class="video-poster" />
+            <img src="assets/img/embalaje-pallets.png" alt="Tutorial de embalaje" class="video-poster" />
             <div class="video-overlay">
               <div class="play-btn">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><polygon points="6 4 20 12 6 20"/></svg>
@@ -2405,7 +2435,7 @@ h2{font-size:42px!important}
 
     <!-- testimonial-style note -->
     <div class="emb-quote reveal">
-      <p>«El 2% de los daños ocurre por embalaje deficiente. Nosotros te ayudamos a evitarlo.»</p>
+      <p>«Casi todos los daños ocurren por embalaje deficiente. Nosotros te ayudamos a evitarlo.»</p>
       <span class="emb-quote-attr">— Operaciones · Expreso El Trébol</span>
     </div>
   </div>
@@ -2645,7 +2675,7 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
   var DATA={
     jovita:{ name:'Jovita', role:'Casa central · Base operativa', badge:true, addr:'Roque Sáenz Peña esq. Acceso Pedro Villemur, Jovita, Córdoba', hours:'Lun a Vie 8–18 h · Sáb 8–12 h', tel:'03385 498175', telHref:'tel:+543385498175', wa:'3385 442979', waHref:'https://wa.me/5493385442979?text=Hola!%20Quer%C3%ADa%20coordinar%20un%20env%C3%ADo%20desde%20Jovita.', person:'Atiende Silvana', chips:['Salidas diarias','Sur de Córdoba','Distribución'] },
     rosario:{ name:'Rosario', role:'Centro de recepción · Santa Fe', badge:false, addr:'Rosario, Santa Fe — recepción y despacho con cita previa', hours:'Lun a Vie 8–18 h', tel:null, telHref:null, wa:'3385 442979', waHref:'https://wa.me/5493385442979?text=Hola!%20Quer%C3%ADa%20coordinar%20una%20recepci%C3%B3n%20en%20Rosario.', person:'Coordiná tu recepción por WhatsApp', chips:['Recepción','Despacho','Corredor BA–Córdoba'] },
-    ba:{ name:'Buenos Aires', role:'Centro de recepción · CABA', badge:false, addr:'Gral. Fructuoso Rivera 2650, Villa Soldati, CABA', hours:'Lun a Vie 8–18 h · Sáb 8–13 h', tel:'011 5193 2494', telHref:'tel:+541151932494', wa:'011 2766 0411', waHref:'https://wa.me/5491127660411?text=Hola!%20Quer%C3%ADa%20coordinar%20un%20env%C3%ADo%20desde%20Buenos%20Aires.', person:'Atiende Carlos', chips:['Recepción','Despacho','Contrareembolso'] }
+    ba:{ name:'Buenos Aires', role:'Centro de recepción · CABA', badge:false, addr:'Gral. Fructuoso Rivera 2650, Villa Soldati, CABA', hours:'Lun a Vie 8–18 h · Sáb 8–13 h', tel:'011 5193 2494', telHref:'tel:+541151932494', wa:'011 2766 0411', waHref:'https://wa.me/5491127660411?text=Hola!%20Quer%C3%ADa%20coordinar%20un%20env%C3%ADo%20desde%20Buenos%20Aires.', person:'Atiende Carlos', chips:['Recepción','Despacho','Contrarreembolso'] }
   };
   var pop=document.createElement('div'); pop.className='gm-pop'; pop.id='gmPop';
   var map=document.getElementById('gmMap'); var current=null;
@@ -2705,7 +2735,7 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
   <div class="wrap quote-grid">
     <div class="quote-side reveal">
       <span class="eyebrow">09 · Cotizá tu envío</span>
-      <h2 style="margin-top:16px;">Cotizá tu envío<br/>en minutos</h2>
+      <h2 class="h2-tab1l" style="margin-top:16px;">Cotizá tu envío<br class="br-tab"/> en minutos</h2>
       <p style="margin-top:16px; color: var(--ink-2); font-size: 18px;">Respondemos cotizaciones en el día. Te contestamos por mail o WhatsApp, lo que prefieras.</p>
     </div>
       <div class="quote-aside reveal">
@@ -3176,7 +3206,14 @@ b.addEventListener('click',function(){var open=!m.classList.contains('open');mod
 </body>
 </html>
 
-<style id="tab-portrait">@media (min-width:561px) and (max-width:1024px) and (orientation:portrait){.wrap{padding-left:40px!important;padding-right:40px!important}}</style>
+<style id="srv-slides">.srv-slides{position:relative;overflow:hidden;width:100%;align-self:stretch}.srv-slides .srv-slide{transition:opacity 1s ease}.srv-slides .srv-slide{position:absolute!important;inset:0;width:100%!important;height:100%!important;object-fit:cover;object-position:center}.srv-slides .srv-slide:not(.is-on){opacity:0}</style>
+<script>(function(){var w=document.querySelector('.srv-slides');if(!w||matchMedia('(prefers-reduced-motion: reduce)').matches)return;var s=w.querySelectorAll('.srv-slide'),i=0;setInterval(function(){if(document.hidden)return;s[i].classList.remove('is-on');i=(i+1)%s.length;s[i].classList.add('is-on');},3500);})();</script>
+<style id="hero-bullets-mob">@media (max-width:560px){.hero-bullets{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px!important}.hero-bullet{flex-direction:column!important;align-items:flex-start!important;gap:6px!important;font-size:12.5px!important;line-height:1.35!important}.hero-bullet .check{width:20px!important;height:20px!important;flex:none}.hero-bullet .check svg{width:11px!important;height:11px!important}}</style>
+<style id="h2-1l">@media (min-width:561px){.h2-1l{white-space:nowrap;max-width:none!important}.sec-head:has(.h2-1l),.emb-header:has(.h2-1l){max-width:none!important}}</style>
+<style id="h2-tab1l">@media (min-width:561px) and (max-width:1024px) and (orientation:portrait),(min-width:561px) and (max-width:1199px) and (orientation:landscape){.br-tab{display:none}.h2-tab1l{white-space:nowrap;max-width:none!important}.sec-head:has(.h2-tab1l),.quote-side:has(.h2-tab1l){max-width:none!important}}</style>
+<style id="emb-img-size">@media (max-width:1199px){#embalaje .emb-img{flex:none!important;min-height:0!important;height:auto!important;aspect-ratio:21/9!important;overflow:hidden;position:relative}#embalaje .emb-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}}@media (min-width:561px) and (max-width:1199px){#embalaje .emb-img{aspect-ratio:auto!important;height:220px!important}}@media (max-width:560px){#embalaje .emb-img{aspect-ratio:2/1!important}}</style>
+<style id="emp-cta-tab">@media (min-width:561px) and (max-width:1024px) and (orientation:portrait),(min-width:561px) and (max-width:1199px) and (orientation:landscape){.emp-cta-card{flex-wrap:nowrap!important;gap:24px!important}.emp-cta-card>div{flex:1 1 auto;min-width:0}.emp-cta-card>div p{max-width:none}.emp-cta-card .btn{flex:none;width:auto!important;white-space:nowrap}}@media (min-width:561px) and (max-width:1024px) and (orientation:portrait){.foot-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:28px 24px!important}.foot-grid>div:nth-child(4){grid-column:auto!important}}</style>
+<style id="tab-portrait">@media (min-width:561px) and (max-width:1024px) and (orientation:portrait){.wrap{padding-left:40px!important;padding-right:40px!important}.hero-visual{max-height:none!important;width:100%!important;aspect-ratio:16/10!important}.hero-collage{display:grid!important;grid-template-columns:1fr!important;grid-template-rows:1.55fr 1fr!important;gap:6px!important;height:100%!important}.hero-collage-bottom{display:grid!important;grid-template-columns:1fr 1fr!important;grid-template-rows:1fr!important;gap:6px!important}.hero-tile img{width:100%;height:100%;object-fit:cover}.srv-wide-img{aspect-ratio:21/8!important;position:relative;overflow:hidden;width:100%!important;align-self:stretch}.srv-wide-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}.emp-benefits{display:grid!important;grid-template-columns:repeat(3,auto)!important;justify-content:space-between;gap:16px!important}.emp-benefit{display:flex!important;align-items:center;gap:10px!important;min-width:0;font-size:15px!important;font-weight:500;white-space:nowrap}.emp-benefit .emp-ico{width:40px!important;height:40px!important;flex:none}.emp-hero .btn{display:inline-flex!important;width:max-content!important;margin-left:0!important;margin-right:0!important;padding-left:28px!important;padding-right:28px!important}.emp-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:8px!important}.hero-cta{flex-direction:row!important;flex-wrap:wrap;justify-content:flex-start!important;gap:12px!important}.hero-cta .btn{width:auto!important}.hero-bullets{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:14px!important}.hero-bullet{gap:8px!important;font-size:13.5px!important}}</style>
 <style id="__om-edit-overrides">
 #cobertura .cov-intro :is(h1,h2) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { color: rgb(14, 107, 61) !important }
 </style>
