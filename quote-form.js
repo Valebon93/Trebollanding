@@ -1,11 +1,8 @@
-/* Cotizador El Trébol — origen/destino, bultos, retiro, revisión y estados de envío */
+
 (function () {
   const form = document.getElementById('quoteForm');
   if (!form) return;
 
-  /* ---------- Datos: localidades habilitadas ----------
-     Regla (a confirmar con el cliente): los envíos conectan la zona
-     "Buenos Aires y Rosario" con la zona "Sur de Córdoba" y viceversa. */
   const ZONES = {
     metro: { label: 'Buenos Aires y Rosario', items: [
       ['caba', 'Buenos Aires (CABA)', 'Ciudad Autónoma de Buenos Aires'],
@@ -30,7 +27,7 @@
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const norm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
   const nf = new Intl.NumberFormat('es-AR', { maximumFractionDigits: 2 });
-  const WA = 'https://wa.me/5493385442979?text=' + encodeURIComponent('Hola! Quería consultar por un envío a una localidad que no figura en el cotizador.');
+  const WA = 'https://wa.me/5493385442979?text=' + encodeURIComponent('¡Hola! Quiero cotizar un envío');
   const ICON = {
     chev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>',
     search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.6" y2="16.6"/></svg>',
@@ -44,7 +41,6 @@
     arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg>'
   };
 
-  /* ---------- Combobox con búsqueda ---------- */
   const combos = [];
   function Combo(root, opt) {
     const btn = document.createElement('button');
@@ -120,7 +116,6 @@
   }
   document.addEventListener('mousedown', e => combos.forEach(c => { if (!c.root.contains(e.target)) c.close(); }));
 
-  /* ---------- Origen / destino ---------- */
   const origen = Combo($('[data-combo="origen"]'), {
     labelId: 'qfLblOrigen', placeholder: 'Elegí la localidad de origen',
     groups: () => groupsFor(['metro', 'sur']),
@@ -142,21 +137,23 @@
   });
   destino.disable(true);
 
-  /* ---------- Bultos (filas compactas, siempre editables) ---------- */
   let bultos = [], seq = 0, triedB = false;
   const bWrap = $('#qfBultos'), bSummary = $('#qfSummary');
-  const DIMS = [['cant', 'Cantidad', '1'], ['largo', 'Largo (cm)', '0'], ['ancho', 'Ancho (cm)', '0'], ['alto', 'Alto (cm)', '0'], ['peso', 'Peso (kg)', '0']];
+  const DIMS = [['cant', 'Cantidad', '1', ''], ['largo', 'Largo', '0', 'cm'], ['ancho', 'Ancho', '0', 'cm'], ['alto', 'Alto', '0', 'cm'], ['peso', 'Peso', '0', 'kg']];
+  const mqCel = window.matchMedia('(max-width:640px)');
+  const lbl = (l, u) => l + (u ? '<span class="qf-unit"> (' + u + ')</span>' : '');
   const newBulto = () => ({ id: ++seq, cant: '1', peso: '', largo: '', ancho: '', alto: '' });
   const okVal = (k, v) => +v > 0 && (k !== 'cant' || Number.isInteger(+v));
   const bValid = b => DIMS.every(([k]) => okVal(k, b[k]));
   const bText = b => b.cant + ' × ' + nf.format(+b.largo) + ' × ' + nf.format(+b.ancho) + ' × ' + nf.format(+b.alto) + ' cm · ' + nf.format(+b.peso) + ' kg c/u';
   function renderBultos() {
-    bWrap.innerHTML = '<div class="qf-brow qf-bhead" aria-hidden="true">' + DIMS.map(d => '<span>' + d[1] + '</span>').join('') + '<span></span></div>' +
-      bultos.map((b, i) => '<div class="qf-brow" role="group" aria-label="Bulto ' + (i + 1) + '">' + DIMS.map(([k, l, ph]) =>
-        '<label class="qf-bcell' + (triedB && !okVal(k, b[k]) ? ' is-error' : '') + '"><span>' + l + '</span><input type="number" inputmode="decimal" min="' + (k === 'cant' ? 1 : 0) + '" step="' + (k === 'cant' ? 1 : 'any') + '" placeholder="' + ph + '" value="' + esc(b[k]) + '" data-id="' + b.id + '" data-k="' + k + '" aria-label="' + l + ' bulto ' + (i + 1) + '"/></label>').join('') +
+    bWrap.innerHTML = '<div class="qf-brow qf-bhead" aria-hidden="true">' + DIMS.map(d => '<span>' + lbl(d[1], d[3]) + '</span>').join('') + '<span></span></div>' +
+      bultos.map((b, i) => '<div class="qf-brow" role="group" aria-label="Bulto ' + (i + 1) + '">' + DIMS.map(([k, l, ph, u]) =>
+        '<label class="qf-bcell' + (triedB && !okVal(k, b[k]) ? ' is-error' : '') + '"><span>' + lbl(l, u) + '</span><input type="number" inputmode="decimal" min="' + (k === 'cant' ? 1 : 0) + '" step="' + (k === 'cant' ? 1 : 'any') + '" placeholder="' + (mqCel.matches && u ? u : ph) + '" value="' + esc(b[k]) + '" data-id="' + b.id + '" data-k="' + k + '" aria-label="' + l + (u ? ' (' + u + ')' : '') + ' bulto ' + (i + 1) + '"/></label>').join('') +
         '<button type="button" class="qf-bdel" data-act="del" data-id="' + b.id + '" aria-label="Eliminar bulto ' + (i + 1) + '"' + (bultos.length < 2 ? ' disabled' : '') + '>' + ICON.trash + '</button></div>').join('');
     renderSummary();
   }
+  mqCel.addEventListener('change', renderBultos);
   function renderSummary() {
     const ok = bultos.filter(bValid);
     const u = ok.reduce((s, b) => s + +b.cant, 0), kg = ok.reduce((s, b) => s + b.cant * b.peso, 0), m3 = ok.reduce((s, b) => s + b.cant * b.largo * b.ancho * b.alto / 1e6, 0);
@@ -173,15 +170,23 @@
     const a = e.target.closest('[data-act="del"]'); if (!a || a.disabled) return;
     bultos = bultos.filter(x => x.id !== +a.dataset.id); renderBultos(); clearErr('bultos'); refresh();
   });
+  let selOnUp = null;
+  bWrap.addEventListener('focusin', e => {
+    const t = e.target; if (!t.dataset.k || !t.value) return;
+    t.select(); selOnUp = t;
+  });
+  bWrap.addEventListener('pointerup', e => {
+    if (selOnUp && e.target === selOnUp) { e.preventDefault(); selOnUp.select(); }
+    selOnUp = null;
+  });
   $('#qfAddBulto').addEventListener('click', () => {
     bultos.push(newBulto()); renderBultos();
     const f = bWrap.querySelector('.qf-brow:last-child input[data-k="largo"]'); f && f.focus();
     clearErr('bultos'); refresh();
   });
 
-  /* ---------- Retiro a domicilio + autocompletado (propuesta Google Places) ---------- */
   const addrBox = $('#qfAddress'), calle = $('#qfCalle'), placesPop = $('#qfPlacesPop'), addrStatus = $('#qfAddrStatus'), prov = $('#qfProv');
-  let addrState = 'empty'; // empty | pending | selected | invalid
+  let addrState = 'empty';
   const locRetiro = Combo($('[data-combo="localidad"]'), {
     labelId: 'qfLblLoc', placeholder: 'Buscá y seleccioná una localidad…',
     emptyText: 'Solo retiramos en localidades habilitadas de la zona de origen.',
@@ -214,20 +219,26 @@
     const zone = origen.value ? LOC[origen.value].zone : 'sur';
     const base = locRetiro.value ? [LOC[locRetiro.value]] : [];
     const pool = base.concat(ZONES[zone].items.map(([v]) => LOC[v]).filter(l => l.value !== locRetiro.value)).slice(0, 3);
-    const street = q.replace(/\s+\d+.*$/, '');
-    sugg = pool.map(l => ({ street, loc: l, ok: true }));
-    sugg.push({ street, loc: { label: 'Córdoba Capital', prov: 'Córdoba' }, ok: false });
+    const m = q.match(/^(.*\S)\s+(\d+[a-zA-Z]?)$/);
+    const street = m ? m[1].trim() : q, num = m ? m[2] : '';
+    sugg = pool.map(l => ({ street, num, loc: l, ok: true }));
+    sugg.push({ street, num, loc: { label: 'Córdoba Capital', prov: 'Córdoba' }, ok: false });
     sActive = 0;
-    placesPop.innerHTML = '<ul class="qf-list" role="listbox">' + sugg.map((s, i) => '<li class="qf-opt' + (i === sActive ? ' active' : '') + '" role="option" data-i="' + i + '">' + ICON.pin + '<span><b>' + esc(s.street) + '</b><small>' + esc(s.loc.label) + ', ' + esc(s.loc.prov) + ', Argentina</small></span></li>').join('') + '</ul><div class="qf-pop-foot"><span class="qf-gfoot">con tecnología de <b>Google</b></span></div>';
+    placesPop.innerHTML = '<ul class="qf-list" role="listbox">' + sugg.map((s, i) => '<li class="qf-opt' + (i === sActive ? ' active' : '') + '" role="option" data-i="' + i + '">' + ICON.pin + '<span><b>' + esc(s.street + (s.num ? ' ' + s.num : '')) + '</b><small>' + esc(s.loc.label) + ', ' + esc(s.loc.prov) + ', Argentina</small></span></li>').join('') + '</ul><div class="qf-pop-foot"><span class="qf-gfoot">con tecnología de <b>Google</b></span></div>';
     placesPop.hidden = false;
   }
   function pickPlace(i) {
     const s = sugg[i]; if (!s) return;
     placesPop.hidden = true; calle.value = s.street; clearErr('calle');
+    const numero = $('#qfNumero');
+    if (s.num) { numero.value = s.num; clearErr('numero'); }
     if (!s.ok) { setAddr('invalid', s.loc.label + ' no es una localidad habilitada para retiro.'); return; }
     locRetiro.set(s.loc.value, true); prov.value = s.loc.prov; clearErr('localidad');
-    setAddr('selected', s.street + ', ' + s.loc.label + ', ' + s.loc.prov + '.');
-    $('#qfNumero').focus();
+    setAddr('selected', s.street + (s.num ? ' ' + s.num : '') + ', ' + s.loc.label + ', ' + s.loc.prov + '.');
+    numero.focus({ preventScroll: true });
+    if (numero.value) numero.select();
+    numero.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    refresh();
   }
   calle.addEventListener('input', () => { renderPlaces(); setAddr(calle.value.trim() ? 'pending' : 'empty'); clearErr('calle'); });
   calle.addEventListener('keydown', e => {
@@ -240,7 +251,6 @@
   calle.addEventListener('blur', () => setTimeout(() => { placesPop.hidden = true; }, 120));
   placesPop.addEventListener('mousedown', e => { const li = e.target.closest('.qf-opt'); if (li) { e.preventDefault(); pickPlace(+li.dataset.i); } });
 
-  /* ---------- Validación ---------- */
   const val = id => ($('#' + id) ? $('#' + id).value.trim() : '');
   function errors() {
     const e = {};
@@ -286,7 +296,6 @@
   }
   form.addEventListener('input', e => { const f = e.target.closest('[data-f]'); if (f && !e.target.dataset.k) f.classList.remove('is-error'); refresh(); });
 
-  /* ---------- Vistas: edición → revisión → envío ---------- */
   const vEdit = $('#qfEdit'), vReview = $('#qfReview'), vResult = $('#qfResult');
   const scrollToEl = el => window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 96, behavior: 'smooth' });
   function show(v) { [vEdit, vReview, vResult].forEach(x => { x.hidden = x !== v; }); }
@@ -328,9 +337,6 @@
   });
   $('#qfBack').addEventListener('click', () => { show(vEdit); scrollToEl(form); });
 
-  /* Envío: el éxito se muestra SOLO cuando el servidor confirma.
-     Reemplazar enviarSolicitud() por el fetch real al backend.
-     Demo: agregar ?simular=error a la URL para ver el estado de error (el reintento funciona). */
   let failNext = /[?&]simular=error/.test(location.search);
   function enviarSolicitud(payload) {
     return new Promise((res, rej) => setTimeout(() => {

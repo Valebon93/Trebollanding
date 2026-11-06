@@ -8,30 +8,30 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
-  /* Artegra Sans — corporate typeface from brand manual (full licensed family). */
-  @font-face { font-family: 'Artegra Sans'; src: url('assets/fonts/ArtegraSans-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
-  @font-face { font-family: 'Artegra Sans'; src: url('assets/fonts/ArtegraSans-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
-  @font-face { font-family: 'Artegra Sans'; src: url('assets/fonts/ArtegraSans-SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: swap; }
-  @font-face { font-family: 'Artegra Sans'; src: url('assets/fonts/ArtegraSans-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
-  @font-face { font-family: 'Artegra Sans'; src: url('assets/fonts/ArtegraSans-ExtraBold.ttf') format('truetype'); font-weight: 800; font-style: normal; font-display: swap; }
-  @font-face { font-family: 'Artegra Sans'; src: url('assets/fonts/ArtegraSans-Black.ttf') format('truetype'); font-weight: 900; font-style: normal; font-display: swap; }
+
+  @font-face { font-family: 'Artegra Sans'; src: url('assets/fonts/ArtegraSans-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; ascent-override: 86%; descent-override: 14%; }
+  @font-face { font-family: 'Artegra Sans'; src: url('assets/fonts/ArtegraSans-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; ascent-override: 86%; descent-override: 14%; }
+  @font-face { font-family: 'Artegra Sans'; src: url('assets/fonts/ArtegraSans-SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: swap; ascent-override: 86%; descent-override: 14%; }
+  @font-face { font-family: 'Artegra Sans'; src: url('assets/fonts/ArtegraSans-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; ascent-override: 86%; descent-override: 14%; }
+  @font-face { font-family: 'Artegra Sans'; src: url('assets/fonts/ArtegraSans-ExtraBold.ttf') format('truetype'); font-weight: 800; font-style: normal; font-display: swap; ascent-override: 86%; descent-override: 14%; }
+  @font-face { font-family: 'Artegra Sans'; src: url('assets/fonts/ArtegraSans-Black.ttf') format('truetype'); font-weight: 900; font-style: normal; font-display: swap; ascent-override: 86%; descent-override: 14%; }
 </style>
 <style>
   :root {
-    /* Paleta El Trébol — junio 2026 */
-    --green: #0E6B3D;          /* Trebol Green */
-    --green-soft: #DDF5E2;     /* Mint Cargo */
-    --green-deep: #0A5A33;     /* Forest Clover */
+
+    --green: #0E6B3D;
+    --green-soft: #DDF5E2;
+    --green-deep: #0A5A33;
     --green-glow: rgba(14, 107, 61, 0.20);
-    --gray-brand: #757575;     /* Steel Route */
-    --cream: #F7FBF3;          /* Spring Canvas */
-    --cream-2: #F1F5EE;        /* Soft Meadow */
-    --track-bg: #EEF6EE;       /* Fresh Route */
-    --ink: #151515;            /* Asphalt */
-    --ink-2: #4A4A4A;          /* Graphite Road */
-    --ink-3: #757575;          /* Steel Route */
-    --line: #E3E8DF;           /* Depot Line */
-    --line-2: #E3E8DF;         /* Depot Line */
+    --gray-brand: #757575;
+    --cream: #F7FBF3;
+    --cream-2: #F1F5EE;
+    --track-bg: #EEF6EE;
+    --ink: #151515;
+    --ink-2: #4A4A4A;
+    --ink-3: #757575;
+    --line: #E3E8DF;
+    --line-2: #E3E8DF;
     --shadow-sm: 0 1px 2px rgba(21, 21, 21, 0.04), 0 2px 8px rgba(21, 21, 21, 0.04);
     --shadow-md: 0 4px 12px rgba(21, 21, 21, 0.06), 0 12px 32px rgba(21, 21, 21, 0.06);
     --shadow-lg: 0 8px 24px rgba(21, 21, 21, 0.08), 0 24px 60px rgba(21, 21, 21, 0.10);
@@ -59,7 +59,6 @@
   button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
 
-  /* ===== TYPE ===== */
   .eyebrow {
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
@@ -77,7 +76,6 @@
   h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.2; }
   p { margin: 0; text-wrap: pretty; }
 
-  /* ===== NAV ===== */
   .nav {
     position: sticky; top: 0; z-index: 50;
     background: rgba(247, 251, 243, 0.78);
@@ -132,7 +130,6 @@
   .nav-drawer a:hover { background: var(--cream-2); }
   .nav-links a:focus-visible, .nav-drawer a:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
 
-  /* ===== BUTTONS ===== */
   .btn {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 13px 22px; border-radius: var(--radius); font-weight: 600; font-size: 15px;
@@ -153,7 +150,6 @@
   .arrow { display: inline-block; transition: transform .2s ease; }
   .btn:hover .arrow { transform: translateX(3px); }
 
-  /* ===== HERO ===== */
   .hero { padding: 56px 0 88px; position: relative; overflow: hidden; }
   .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
   .badge {
@@ -183,7 +179,6 @@
   }
   .check svg { width: 11px; height: 11px; }
 
-  /* Hero visual — Apple-style collage: big top + two bottom tiles */
   .hero-visual { position: relative; aspect-ratio: 4/5; max-height: 640px; }
   .hero-collage { position: absolute; inset: 0; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); display: grid; grid-template-rows: 1.55fr 1fr; gap: 6px; background: var(--cream-2); }
   .hero-collage-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
@@ -227,7 +222,6 @@
   .eta-time { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
   .eta-sub { font-size: 12px; color: var(--ink-3); margin-top: 2px; }
 
-  /* Placeholder image style */
   .ph {
     width: 100%; height: 100%; background:
       repeating-linear-gradient(135deg, #E3E8DF 0 2px, transparent 2px 14px),
@@ -243,7 +237,6 @@
     color: #b8b8b8;
   }
 
-  /* ===== SECTION ===== */
   section { padding: 100px 0; position: relative; }
   .sec-head { max-width: 720px; margin-bottom: 56px; }
   .sec-head .eyebrow { display: inline-flex; align-items: center; gap: 8px; }
@@ -251,7 +244,6 @@
   .sec-head h2 { margin-top: 16px; }
   .sec-head p { margin-top: 16px; font-size: 19px; color: var(--ink-2); max-width: 580px; }
 
-  /* ===== SERVICES (clean grid) ===== */
   #servicios { background: var(--cream); }
   .srv-grid {
     display: grid;
@@ -273,7 +265,7 @@
     box-shadow: 0 10px 24px rgba(14, 107, 61, 0.10);
     border-color: var(--line-2);
   }
-  /* large card spanning two columns */
+
   .srv-lg { grid-column: span 2; }
   .srv-icon {
     width: 44px; height: 44px;
@@ -301,7 +293,6 @@
     line-height: 1.5;
   }
 
-  /* wide card with image */
   .srv-wide {
     grid-column: span 4;
     height: 210px;
@@ -342,7 +333,6 @@
     .srv-wide { grid-column: span 1; }
   }
 
-  /* ===== SERVICES (BENTO) ===== */
   #servicios { background: var(--cream-2); border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2); }
   .bento { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 220px; gap: 14px; }
   .card {
@@ -364,11 +354,10 @@
   .card-arrow { margin-top: auto; align-self: flex-start; color: var(--ink-3); transition: color .2s ease, transform .2s ease; padding-top: 16px; }
   .card:hover .card-arrow { color: var(--green-deep); transform: translateX(4px); }
 
-  /* bento spans */
   .span-wide { grid-column: span 3; }
   .span-md { grid-column: span 2; }
   .span-tall { grid-row: span 2; }
-  /* keep min content space inside small bento cards */
+
   .bento .card:not(.feature):not(.image-card) { min-height: 240px; }
   .bento { grid-auto-rows: minmax(240px, auto); }
   .card.feature {
@@ -394,7 +383,6 @@
   }
   .card.image-card .card-body p { color: #d8d8d8; }
 
-  /* ===== TRACKING SECTION ===== */
   #seguimiento { background: var(--cream-2); border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2); }
   #seguimiento .sec-head .eyebrow { color: var(--green-deep); }
   #seguimiento .sec-head .eyebrow::before { background: var(--green); }
@@ -418,10 +406,8 @@
   .tf-soon .tf-icon { background: #fff; }
   .tf-soon h4 { color: var(--green-deep); }
 
-  /* tracking mockups — replican el email + timeline reales */
   .mockup-stack { position: relative; margin: 0; padding-bottom: 196px; }
 
-  /* ---- Email card ---- */
   .mk-mail { position: relative; width: 80%; z-index: 1; background: #fff; border: 1px solid var(--line-2); border-radius: 16px; box-shadow: var(--shadow-lg); padding: 20px 22px; color: var(--ink); }
   .mk-fit-mail { width: auto; padding: 0; }
   .mk-mail-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
@@ -448,7 +434,6 @@
   .mk-seguir-btn { background: var(--green); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: .04em; padding: 11px 24px; border-radius: 6px; cursor: default; }
   .mk-foot { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line-2); font-size: 10px; font-style: italic; color: var(--ink-3); line-height: 1.45; }
 
-  /* ---- Timeline card ---- */
   .mk-track { position: absolute; right: 0; bottom: 0; width: 78%; z-index: 2; background: var(--cream); border: 1px solid var(--line-2); border-radius: 16px; box-shadow: var(--shadow-lg); padding: 22px 24px; }
   .mk-track .mk-tl { width: auto; padding: 0; }
   .mock-btn { position: absolute; left: 22%; bottom: -30px; z-index: 3; background: var(--green); color: #fff; padding: 13px 22px; border-radius: 12px; font-weight: 700; font-size: 14px; box-shadow: 0 12px 28px var(--green-glow); display: inline-flex; align-items: center; gap: 8px; cursor: default; }
@@ -468,7 +453,6 @@
   .mk-tl-title strong { font-weight: 800; }
   .mk-tl-sub { font-size: 12px; color: #9aa39a; margin-top: 3px; line-height: 1.35; }
 
-  /* ===== HOW IT WORKS ===== */
   .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; margin-top: 20px; }
   .step { padding: 28px 24px 28px 0; border-top: 2px solid var(--line); position: relative; display: flex; flex-direction: column; min-height: 240px; }
   .step::before {
@@ -480,7 +464,6 @@
   .step p { margin-top: 8px; color: var(--ink-3); font-size: 14.5px; }
   .step-icon { margin-top: auto; width: 36px; height: 36px; border-radius: 10px; background: var(--green-soft); color: var(--green-deep); display: grid; place-items: center; }
 
-  /* progressive build: line draws + dot lights + content appears, step by step */
   .step::after {
     content: ''; position: absolute; top: -2px; left: 0; right: -1px; height: 2px;
     background: var(--green); transform: scaleX(0); transform-origin: left;
@@ -496,7 +479,6 @@
     .step > * { opacity: 1; transform: none; transition: none; }
   }
 
-  /* ===== COVERAGE ===== */
   #cobertura { background: var(--cream-2); border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2); }
   .cov-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: center; }
   .cov-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; }
@@ -542,8 +524,6 @@
   .leg-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--green); }
   .leg-dot.hub { background: var(--ink); }
 
-  /* --- coverage interactions --- */
-  /* progressive node appearance */
   .map-wrap .pin {
     opacity: 0;
     transform: translate(-50%, -100%) scale(0.45);
@@ -551,13 +531,13 @@
     cursor: pointer; z-index: 1;
   }
   .map-wrap.nodes-in .pin { opacity: 1; transform: translate(-50%, -100%) scale(1); }
-  /* hover: enlarge node */
+
   .pin-dot { transition: transform .25s ease, box-shadow .25s ease; }
   .pin:hover { z-index: 8; }
   .pin:hover .pin-dot { transform: scale(1.5); box-shadow: 0 0 0 6px var(--green-glow), 0 6px 14px rgba(21,21,21,0.22); }
   .pin.hub:hover .pin-dot { box-shadow: 0 0 0 6px rgba(21,21,21,0.14), 0 6px 14px rgba(21,21,21,0.28); }
   .pin:hover .pin-label { box-shadow: var(--shadow-md); }
-  /* frequency tooltip */
+
   .pin-tip {
     position: absolute; bottom: calc(100% + 8px); left: 50%;
     transform: translateX(-50%) translateY(5px);
@@ -573,7 +553,7 @@
     border: 5px solid transparent; border-top-color: var(--ink);
   }
   .pin:hover .pin-tip { opacity: 1; transform: translateX(-50%) translateY(0); }
-  /* route trace + flow */
+
   .map-svg .route { stroke-linecap: round; }
   .map-svg .route.flowing { animation: dashflow 1.1s linear infinite; }
   @keyframes dashflow { to { stroke-dashoffset: -2.5; } }
@@ -582,7 +562,6 @@
     .map-svg .route.flowing { animation: none; }
   }
 
-  /* ===== QUOTE FORM ===== */
   .quote-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,420px); gap: 32px 56px; align-items: end; }
   .quote-grid .form { grid-column: 1 / -1; width: 100%; max-width: 100%; box-sizing: border-box; }
   .quote-grid .quote-aside { margin-top: 0; }
@@ -601,11 +580,9 @@
   .quote-aside .ctas .cta-link:hover { color: var(--green-deep); }
   .quote-aside .ctas svg { width: 14px; height: 14px; color: var(--green-deep); flex-shrink: 0; }
 
-  /* footer phone links */
   footer ul a { transition: color .15s ease; }
   footer ul a:hover { color: var(--cream); }
 
-  /* ===== TOAST (form submit confirmation) ===== */
   .toast {
     position: fixed;
     bottom: 28px; right: 28px;
@@ -714,7 +691,6 @@
   .form-submit .form-disclaimer { max-width: 100%; text-align: center; }
   .form-disclaimer { font-size: 12.5px; color: var(--ink-3); max-width: 320px; }
 
-  /* ===== FOOTER ===== */
   footer {
     background: linear-gradient(180deg, #0f3d23 0%, var(--green-deep) 100%);
     color: rgba(255, 255, 255, 0.78);
@@ -741,7 +717,6 @@
     color: #9a9a9a;
   }
 
-  /* ===== REVEAL ANIMATIONS ===== */
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
   .reveal.in { opacity: 1; transform: none; }
   .stagger > * { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
@@ -754,7 +729,6 @@
   .stagger.in > *:nth-child(6) { transition-delay: .4s; }
   .stagger.in > *:nth-child(7) { transition-delay: .48s; }
 
-  /* ===== EMPRESAS B2B ===== */
   .emp-hero { max-width: 100%; }
   .emp-hero h2 { max-width: 1050px; }
   .emp-benefits { display: flex; flex-wrap: wrap; gap: 14px 28px; margin-top: 28px; }
@@ -775,17 +749,13 @@
   .emp-logos { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; column-gap: 56px; row-gap: 32px; }
   .emp-logo-slot { height: 44px; width: auto; filter: grayscale(1); opacity: .75; transition: opacity .2s ease, filter .2s ease; }
   .emp-logo-slot:hover { opacity: 1; filter: grayscale(0); }
-  .emp-logo-slot image-slot { height: 100%; width: auto; }
+  .logo-ph { display: flex; align-items: center; justify-content: center; text-align: center; box-sizing: border-box; height: 100%; aspect-ratio: 3/2; padding: 4px; background: rgba(0,0,0,.04); border: 1.5px dashed rgba(0,0,0,.25); font: 500 13px/1.3 system-ui, -apple-system, sans-serif; color: rgba(0,0,0,.55); }
 
-  /* ===== SERVICIOS CALLOUT ===== */
   .srv-callout { margin-top: 28px; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; background: var(--ink); color: var(--cream); border-radius: 18px; padding: 32px 36px; }
   .srv-callout h3 { font-size: 22px; margin: 0 0 8px; color: #fff; }
   .srv-callout p { color: #c7ccc4; font-size: 15px; max-width: 560px; margin: 0; }
   .srv-callout .btn-green { flex-shrink: 0; }
 
-  /* ===== RUBROS (unused, legacy) ===== */
-
-  /* ===== VIDEO PLACEHOLDER ===== */
   .video-placeholder { margin-top: 16px; border-radius: 14px; border: 1px dashed var(--line); background: var(--cream-2); padding: 22px; display: flex; align-items: center; gap: 16px; }
   .video-placeholder .vp-play { width: 44px; height: 44px; border-radius: 50%; background: var(--green); color: #fff; display: grid; place-items: center; flex-shrink: 0; }
   .video-placeholder h4 { margin: 0 0 4px; font-size: 15px; }
@@ -797,7 +767,6 @@
   .tf-video-expand { position: absolute; top: 8px; right: 10px; color: #fff; opacity: .8; cursor: pointer; }
   .tf-video-expand:hover { opacity: 1; }
 
-  /* video modal (tracking section) */
   .tv-modal-overlay { position: fixed; inset: 0; background: rgba(21,21,21,0.82); z-index: 999; display: none; align-items: center; justify-content: center; padding: 32px; }
   .tv-modal-overlay.open { display: flex; }
   .tv-modal { position: relative; width: min(900px, 100%); aspect-ratio: 16/9; background: var(--ink); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow-lg); display: flex; align-items: center; justify-content: center; }
@@ -808,8 +777,6 @@
   .video-modal-shrink2 { position: absolute; top: 14px; right: 60px; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.12); color: #fff; display: grid; place-items: center; cursor: pointer; border: none; z-index: 2; }
   .video-modal-shrink2:hover { background: rgba(255,255,255,0.22); }
 
-  /* ===== RESPONSIVE ===== */
-  /* ===== NOSOTROS ===== */
   .nos-header { max-width: 800px; margin-bottom: 56px; }
   .nos-header h2 { line-height: 1.05; }
 
@@ -854,7 +821,6 @@
   }
   .nos-story strong { color: var(--ink); font-weight: 700; }
 
-  /* hoy row: team photo + stats side by side (full width) */
   .nos-hoy-row {
     margin-top: 40px;
     display: flex;
@@ -886,7 +852,7 @@
     letter-spacing: -0.025em; line-height: 1;
     color: var(--green-deep);
   }
-  /* odometer (rolling digits) */
+
   .odo { display: inline-flex; align-items: flex-start; line-height: 1; font-variant-numeric: tabular-nums; }
   .odo-reel { display: inline-block; height: 1.1em; overflow: hidden; vertical-align: top; }
   .odo-strip { display: flex; flex-direction: column; will-change: transform; }
@@ -896,7 +862,6 @@
     font-size: 13px; color: var(--ink-3); margin-top: 4px;
   }
 
-  /* historic archive photo */
   .nos-historia {
     margin: 0;
     border-radius: 16px;
@@ -1022,7 +987,6 @@
     .nos-hl { flex: 0 0 90px; }
   }
 
-  /* ===== EMBALAJE (tabs section) ===== */
   .emb-header { max-width: 720px; margin-bottom: 32px; }
   .emb-header h2 { line-height: 1.05; }
   .emb-header h2 em { font-style: italic; color: var(--green); }
@@ -1065,7 +1029,6 @@
     align-items: stretch;
   }
 
-  /* panels */
   .emb-panel { display: none; }
   .emb-panel.active { display: block; animation: panelFade .35s ease; }
   @keyframes panelFade {
@@ -1128,7 +1091,6 @@
     line-height: 1.5;
   }
 
-  /* right aside */
   .emb-right { display: flex; flex-direction: column; gap: 14px; }
   .emb-errors {
     background: white;
@@ -1186,7 +1148,6 @@
     display: block;
   }
 
-  /* bottom CTA */
   .emb-cta {
     margin-top: 32px;
     display: flex; gap: 18px; align-items: center;
@@ -1205,7 +1166,6 @@
     display: flex; gap: 10px; margin-left: auto; flex-wrap: wrap;
   }
 
-  /* video modal */
   .video-modal {
     position: fixed; inset: 0; z-index: 200;
     background: rgba(21, 21, 21, 0.85);
@@ -1295,7 +1255,6 @@
     .play-btn { width: 60px; height: 60px; }
   }
 
-  /* quote */
   .emb-quote {
     margin-top: 28px;
     padding: 32px 36px;
@@ -1412,7 +1371,7 @@ h3{font-size:20px}
 .sec-head,.emb-header,.nos-header{margin-bottom:22px!important}
 .sec-head p,.emb-header p,.nos-header p{font-size:15px!important}
 .btn{min-height:48px}
-/* 1 header */
+
 .nav-row{padding:10px 0!important;min-height:60px}
 .nav-cta .nav-icon-btn.primary[href="#cotizar"]{display:none!important}
 .nav-icon-btn,.nav-toggle{width:42px!important;height:42px!important}
@@ -1420,7 +1379,7 @@ h3{font-size:20px}
 .nav-drawer a.m-drawer-client{margin-top:auto;display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--cream)}
 .nav-drawer a.m-drawer-client svg{width:18px;height:18px;color:var(--green-deep)}
 .nav-drawer a.m-drawer-cta{background:var(--green);color:#fff;text-align:center;margin-top:8px}
-/* 2 hero */
+
 .hero-grid{gap:28px!important}
 .hero-sub{font-size:16px!important;margin-top:14px!important}
 .hero-cta{flex-direction:column;margin-top:22px!important;gap:10px!important}
@@ -1429,7 +1388,7 @@ h3{font-size:20px}
 .hero-visual{aspect-ratio:16/10!important;max-height:240px!important}
 .hero-collage{grid-template-rows:1fr!important}
 .hero-collage-bottom{display:none!important}
-/* 3 servicios */
+
 .srv-grid{display:flex!important;flex-direction:column;gap:10px!important}
 .srv-card{display:grid!important;grid-template-columns:36px minmax(0,1fr);column-gap:14px;row-gap:2px;align-items:start;padding:16px 18px!important;min-height:0!important;border-radius:14px!important}
 .srv-card>.srv-icon,.srv-wide-content>.srv-icon{grid-row:span 2;width:36px;height:36px;border-radius:9px;margin:0!important}
@@ -1441,10 +1400,11 @@ h3{font-size:20px}
 .srv-wide-img{order:2!important;min-height:0!important;aspect-ratio:16/9}
 .srv-callout{margin-top:14px!important;padding:20px!important;gap:14px!important}
 .srv-callout .btn{width:100%;justify-content:center}
-/* empresas (no especificado: solo compactado) */
+
 .emp-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
 .emp-cta-card,.emp-hero .btn{width:100%}
-/* 5 proceso: timeline vertical */
+.emp-hero .btn{justify-content:center}
+
 #proceso .steps{display:flex!important;flex-direction:column;margin-top:4px!important}
 #proceso .step{border-top:0!important;border-left:2px solid var(--green);margin-left:7px;padding:0 0 24px 24px!important;min-height:0!important}
 #proceso .step:last-child{border-left-color:transparent;padding-bottom:0!important}
@@ -1453,8 +1413,7 @@ h3{font-size:20px}
 #proceso .step-num{line-height:16px}
 #proceso .step h3{margin-top:4px!important;font-size:20px!important}
 #proceso .step p{margin-top:4px!important;font-size:14px!important}
-/* 6 nosotros */
-/* 7 embalaje */
+
 #embalaje .emb-tabs{display:flex!important;width:100%!important;max-width:100%;margin:0 0 18px!important;padding:5px!important;gap:2px!important;overflow-x:auto;scrollbar-width:none;background:#fff!important;border:1px solid var(--line-2)!important;border-radius:14px!important;box-shadow:var(--shadow-sm)!important}
 #embalaje .emb-tabs::-webkit-scrollbar{display:none}
 #embalaje .emb-tab{flex:1 0 auto;padding:10px 14px!important;font-size:12.5px!important;letter-spacing:.06em!important;min-height:42px;border:0!important;border-radius:10px!important;background:none!important;color:var(--ink-3)!important}
@@ -1473,10 +1432,11 @@ h3{font-size:20px}
 #embalaje .emb-cta-actions{display:grid!important;grid-template-columns:1fr 1fr;gap:10px}
 #embalaje .emb-cta-actions .btn{justify-content:center}
 #embalaje>.wrap>.emb-quote{display:none!important}
-/* 9 cotizar por pasos */
+
 #cotizar .quote-aside{order:3}
 #cotizar .form{padding:20px!important;border-radius:18px!important}
 #qfEdit{display:flex;flex-direction:column;gap:0}
+.qf-view[hidden]{display:none!important}
 #qfEdit .form-section-head .num{display:none}
 #qfEdit .m-step-off{display:none!important}
 #qfEdit:not([data-mstep="2"]) .form-submit{display:none!important}
@@ -1675,9 +1635,7 @@ h2{font-size:42px!important}
 </style>
 </head>
 <body>
-<script src="image-slot.js"></script>
 
-<!-- ============ NAV ============ -->
 <nav class="nav" id="nav" data-screen-label="Navbar">
   <div class="wrap nav-row">
     <button type="button" class="nav-toggle" id="navToggle" aria-label="Abrir menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
@@ -1707,13 +1665,7 @@ h2{font-size:42px!important}
   </button>
   <div class="video-modal-content">
     <div class="video-frame">
-      <!--
-        Reemplazar este placeholder por el video real. Dos opciones:
-        (a) Archivo local:
-            <video src="assets/video/embalaje.mp4" poster="assets/img/embalaje-pallets.png" controls autoplay></video>
-        (b) YouTube / Vimeo:
-            <iframe src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      -->
+
       <div class="video-placeholder">
         <img src="assets/img/embalaje-pallets.png" alt="Tutorial de embalaje" class="video-poster" />
         <div class="video-overlay">
@@ -1740,7 +1692,6 @@ h2{font-size:42px!important}
   <a href="#cobertura" data-link="cobertura">Cobertura</a>
 </div>
 
-<!-- ============ HERO ============ -->
 <section class="hero" id="inicio" data-screen-label="Hero">
   <div class="wrap hero-grid">
     <div>
@@ -1783,7 +1734,6 @@ h2{font-size:42px!important}
   </div>
 </section>
 
-<!-- ============ SERVICIOS ============ -->
 <section id="servicios" data-screen-label="Servicios" style="background-color: rgb(241, 245, 238)">
   <div class="wrap">
     <div class="sec-head reveal" style="max-width: 720px; margin-bottom: 40px;">
@@ -1855,7 +1805,6 @@ h2{font-size:42px!important}
   </div>
 </section>
 
-<!-- ============ EMPRESAS B2B ============ -->
 <section id="empresas" data-screen-label="Empresas" style="padding: 132px 0 100px; background: #F1F5EE; border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2);">
   <div class="wrap">
     <div class="emp-hero reveal">
@@ -1897,17 +1846,16 @@ h2{font-size:42px!important}
       <p class="emp-sectors-label">Empresas que confían en nuestra logística</p>
       <p class="emp-clients-intro">La confianza se construye con resultados. Estas son algunas de las empresas que eligen Expreso El Trébol para su logística.</p>
       <div class="emp-logos">
-        <div class="emp-logo-slot"><image-slot id="emp-logo-1" shape="rect" placeholder="Logo cliente"></image-slot></div>
-        <div class="emp-logo-slot"><image-slot id="emp-logo-2" shape="rect" placeholder="Logo cliente"></image-slot></div>
-        <div class="emp-logo-slot"><image-slot id="emp-logo-3" shape="rect" placeholder="Logo cliente"></image-slot></div>
-        <div class="emp-logo-slot"><image-slot id="emp-logo-4" shape="rect" placeholder="Logo cliente"></image-slot></div>
-        <div class="emp-logo-slot"><image-slot id="emp-logo-5" shape="rect" placeholder="Logo cliente"></image-slot></div>
+        <div class="emp-logo-slot"><span class="logo-ph" id="emp-logo-1">Logo cliente</span></div>
+        <div class="emp-logo-slot"><span class="logo-ph" id="emp-logo-2">Logo cliente</span></div>
+        <div class="emp-logo-slot"><span class="logo-ph" id="emp-logo-3">Logo cliente</span></div>
+        <div class="emp-logo-slot"><span class="logo-ph" id="emp-logo-4">Logo cliente</span></div>
+        <div class="emp-logo-slot"><span class="logo-ph" id="emp-logo-5">Logo cliente</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ SEGUIMIENTO ============ -->
 <section id="seguimiento" data-screen-label="Seguimiento" style="background-color: #F1F5EE">
   <div class="wrap tracking-grid trk-desk">
     <div class="reveal">
@@ -1942,7 +1890,7 @@ h2{font-size:42px!important}
     </div>
 
     <div class="mockup-stack reveal">
-      <!-- EMAIL real -->
+
       <div class="mk-mail">
         <div class="mk-fit mk-fit-mail">
         <div class="mk-mail-top">
@@ -1971,7 +1919,6 @@ h2{font-size:42px!important}
         </div>
       </div>
 
-      <!-- TIMELINE real -->
       <div class="mk-track">
         <div class="mk-tl">
           <div class="mk-tl-item">
@@ -2095,7 +2042,6 @@ h2{font-size:42px!important}
 </div>
 </section>
 
-<!-- ============ CÓMO FUNCIONA ============ -->
 <section id="proceso" data-screen-label="Cómo funciona" style="background-color: #F7FBF3">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -2139,7 +2085,6 @@ h2{font-size:42px!important}
   </div>
 </section>
 
-<!-- ============ NOSOTROS ============ -->
 <section id="nosotros" data-screen-label="Nosotros" style="padding: 100px 0; background: #F1F5EE; border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2);">
   <div class="wrap">
     <div class="nos-header reveal">
@@ -2236,17 +2181,15 @@ h2{font-size:42px!important}
   </div>
 </section>
 
-<!-- ============ EMBALAJE TIPS ============ -->
 <section id="embalaje" data-screen-label="Embalaje" style="padding: 100px 0; background: #F7FBF3; border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2);">
   <div class="wrap">
-    <!-- header -->
+
     <div class="emb-header reveal">
       <span class="badge"><span class="badge-dot"></span> 07 · Consejos</span>
       <h2 class="h2-1l" style="margin-top: 16px;">¿Cómo embalar <em style="font-style: italic; color: var(--green); font-weight: 800;">tu envío?</em></h2>
       <p style="margin-top: 16px; color: var(--ink-2); font-size: 19px; max-width: 720px;">El 98% de nuestros envíos llega sin daños. Cuando algo se rompe, casi siempre es por embalaje débil. Te dejamos lo que recomendamos en depósito según el tipo de mercadería.</p>
     </div>
 
-    <!-- tabs -->
     <div class="emb-tabs-wrap">
     <div class="emb-tabs reveal" role="tablist" id="embTabs">
       <button type="button" class="emb-tab active" data-tab="fragil" role="tab" aria-selected="true">frágil</button>
@@ -2256,9 +2199,8 @@ h2{font-size:42px!important}
     </div>
     </div>
 
-    <!-- panels -->
     <div class="emb-grid reveal" id="embGrid">
-      <!-- LEFT: tab-specific tips -->
+
       <div class="emb-left">
         <div class="emb-panel active" data-panel="fragil">
           <h3 class="emb-panel-title">Embalaje para artículos <span style="color: var(--green);">frágiles</span></h3>
@@ -2369,7 +2311,6 @@ h2{font-size:42px!important}
         </div>
       </div>
 
-      <!-- RIGHT: common errors + image -->
       <aside class="emb-right">
         <div class="emb-errors">
           <div class="emb-errors-head">
@@ -2392,7 +2333,6 @@ h2{font-size:42px!important}
       </aside>
     </div>
 
-    <!-- bottom CTA -->
     <div class="emb-cta reveal">
       <p>¿Dudas sobre el embalaje?</p>
       <div class="emb-cta-actions">
@@ -2404,20 +2344,13 @@ h2{font-size:42px!important}
       </div>
     </div>
 
-    <!-- Video modal -->
     <div class="video-modal" id="videoModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Tutorial de embalaje">
       <button class="video-modal-close" id="videoModalClose" aria-label="Cerrar video">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
       <div class="video-modal-content">
         <div class="video-frame">
-          <!--
-            Reemplazar este placeholder por el video real. Dos opciones:
-            (a) Archivo local:
-                <video src="assets/video/embalaje.mp4" poster="assets/img/embalaje-pallets.png" controls autoplay></video>
-            (b) YouTube / Vimeo:
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          -->
+
           <div class="video-placeholder">
             <img src="assets/img/embalaje-pallets.png" alt="Tutorial de embalaje" class="video-poster" />
             <div class="video-overlay">
@@ -2433,7 +2366,6 @@ h2{font-size:42px!important}
       <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding: 16px; background-color: #ffffff; border-radius: 2px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); position: absolute; left: 211px; top: 158px; width: 200px; height: 96px"><div style="box-sizing: border-box; display: flex; flex-direction: column; width: 120px; height: 120px; background-color: #b6b0a7; border-radius: 8px; position: absolute; left: 136px; top: 74px;"></div></div>
     </div>
 
-    <!-- testimonial-style note -->
     <div class="emb-quote reveal">
       <p>«Casi todos los daños ocurren por embalaje deficiente. Nosotros te ayudamos a evitarlo.»</p>
       <span class="emb-quote-attr">— Operaciones · Expreso El Trébol</span>
@@ -2441,7 +2373,6 @@ h2{font-size:42px!important}
   </div>
 </section>
 
-<!-- ============ COBERTURA ============ -->
 <style id="gm-styles">
   #cobertura { background: var(--cream-2); border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2); }
   .cov-intro { display: grid; grid-template-columns: 1fr 520px; gap: 48px; align-items: center; margin-bottom: 0; }
@@ -2467,7 +2398,7 @@ h2{font-size:42px!important}
   .gm-tip::after { content:""; position:absolute; top:100%; left:50%; transform:translateX(-50%); border:4px solid transparent; border-top-color:var(--ink); }
   .gm-hub:hover .gm-tip { opacity:1; transform:translate(-50%,0); }
   .gm-hub.open .gm-tip { opacity:0; }
-  /* BA sits at the right edge — anchor its tooltip right so it doesn't clip */
+
   .gm-hub[data-side="l"] .gm-tip { left:auto; right:0; transform:translate(0,6px); }
   .gm-hub[data-side="l"] .gm-tip::after { left:auto; right:13px; transform:none; }
   .gm-hub[data-side="l"]:hover .gm-tip { transform:translate(0,0); }
@@ -2610,7 +2541,7 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
     ['buchardo','charlone']
   ];
 
-  var SC = 0.45;  // reference-image pixels → viewBox units
+  var SC = 0.45;
   Object.keys(NODES).forEach(function(id){ var n=NODES[id]; n.x*=SC; n.y*=SC; });
   function el(id){ return NODES[id]; }
   function curvePath(a,b,bend){
@@ -2629,13 +2560,13 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
   var svg=document.getElementById('gmSvg');
   svg.setAttribute('viewBox', vbX.toFixed(1)+' '+vbY.toFixed(1)+' '+vbW.toFixed(1)+' '+vbH.toFixed(1));
   var S='';
-  // Río Paraná — right-side meandering river
+
   var riverD='M '+P(1175,-60)+' C '+P(1265,110)+' '+P(1140,215)+' '+P(1205,345)+' C '+P(1265,470)+' '+P(1380,565)+' '+P(1415,720)+' C '+P(1448,855)+' '+P(1520,955)+' '+P(1565,1100);
   S+='<path class="water" d="'+riverD+'" style="stroke-width:'+(16*SC).toFixed(1)+'; opacity:0.4"/>';
   S+='<path class="water" d="'+riverD+'" style="stroke-width:'+(7*SC).toFixed(1)+'; opacity:0.66"/>';
-  // Río de la Plata — soft water body bottom-right
+
   S+='<ellipse cx="'+(1525*SC).toFixed(1)+'" cy="'+(975*SC).toFixed(1)+'" rx="'+(155*SC).toFixed(1)+'" ry="'+(115*SC).toFixed(1)+'" fill="#C3DCEC" opacity="0.5" transform="rotate(-30 '+(1525*SC).toFixed(1)+' '+(975*SC).toFixed(1)+')"/>';
-  // faint decorative green splotches
+
   var BLOBS=[[150,165,62,44,-12],[1185,120,52,40,8],[255,925,72,50,-18],[975,935,66,46,10],[60,985,46,34,0]];
   BLOBS.forEach(function(L){ S+='<ellipse cx="'+(L[0]*SC).toFixed(1)+'" cy="'+(L[1]*SC).toFixed(1)+'" rx="'+(L[2]*SC).toFixed(1)+'" ry="'+(L[3]*SC).toFixed(1)+'" fill="#9CBF9C" opacity="0.12" transform="rotate('+L[4]+' '+(L[0]*SC).toFixed(1)+' '+(L[1]*SC).toFixed(1)+')"/>'; });
   EDGES.forEach(function(e){ var a=el(e[0]),b=el(e[1]); if(!a||!b)return; var bend=e[2]||0; if(bend){ S+='<path class="edge" d="'+curvePath(a,b,bend)+'"/>'; } else { S+='<line class="edge" x1="'+a.x.toFixed(1)+'" y1="'+a.y.toFixed(1)+'" x2="'+b.x.toFixed(1)+'" y2="'+b.y.toFixed(1)+'"/>'; } });
@@ -2730,7 +2661,6 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
 })();
 </script>
 
-<!-- ============ COTIZAR ============ -->
 <section id="cotizar" data-screen-label="Cotizar" style="background-color: #F7FBF3">
   <div class="wrap quote-grid">
     <div class="quote-side reveal">
@@ -2820,7 +2750,6 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
   </div>
 </section>
 
-<!-- ============ TOAST ============ -->
 <div class="toast" id="quoteToast" role="status" aria-live="polite">
   <span class="toast-icon">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -2843,7 +2772,6 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
   </div>
 </div>
 
-<!-- ============ FOOTER ============ -->
 <footer data-screen-label="Footer">
   <div class="wrap">
     <div class="foot-grid">
@@ -2853,7 +2781,7 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
         </a>
         <p style="font-style: italic; color: #d4d6d8; font-size: 16px;">«La tranquilidad de saber que tu envío siempre llega, y siempre llega bien.»</p>
         <p style="margin-top: 16px; font-size: 13.5px; color: #9a9a9a;">Razón social: OTH SAS · CUIT 30-71908479-2</p>
-        <div style="margin-top:16px;display:flex;align-items:center;gap:10px" class="foot-qr-row"><image-slot id="afip-qr" shape="rect" radius="6" placeholder="QR AFIP" style="width:56px;height:56px;flex-shrink:0"></image-slot><span style="font-size:12px;color:#9a9a9a">Datos fiscales</span></div>
+        <div style="margin-top:16px;display:flex;align-items:center;gap:10px" class="foot-qr-row"><span class="logo-ph" id="afip-qr" style="width:56px;height:56px;flex-shrink:0;border-radius:6px">QR AFIP</span><span style="font-size:12px;color:#9a9a9a">Datos fiscales</span></div>
       </div>
       <div>
         <h5>Navegar</h5>
@@ -2895,7 +2823,7 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
 
 <script>
   document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('trackingVideoModal').classList.remove('open'); });
-  // Sticky nav shadow
+
   const nav = document.getElementById('nav');
   const onScroll = () => {
     if (window.scrollY > 8) nav.classList.add('scrolled');
@@ -2904,7 +2832,6 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // Mobile nav drawer
   const navToggle = document.getElementById('navToggle');  const navDrawer = document.getElementById('navDrawer');
   const navOverlay = document.getElementById('navOverlay');
   const navDrawerClose = document.getElementById('navDrawerClose');
@@ -2915,20 +2842,18 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
   navOverlay?.addEventListener('click', closeDrawer);
   navDrawer?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
 
-  // Active link based on visible section
-  const sections = ['inicio','servicios','seguimiento','nosotros','embalaje','cobertura'].map(id => document.getElementById(id)).filter(Boolean);
+  const sections = ['inicio','servicios','seguimiento','nosotros','embalaje','cobertura','cotizar'].map(id => document.getElementById(id)).filter(Boolean);
   const links = [...document.querySelectorAll('.nav-links a, .nav-drawer a')];
   const setActive = (id) => {
     links.forEach(l => l.classList.toggle('active', l.dataset.link === id));
   };
   const navObserver = new IntersectionObserver((entries) => {
-    // pick the entry with the highest intersection ratio that's currently intersecting
+
     const visible = entries.filter(e => e.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio);
     if (visible[0]) setActive(visible[0].target.id);
   }, { rootMargin: '-40% 0px -50% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] });
   sections.forEach(s => navObserver.observe(s));
 
-  // Reveal on scroll
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -2939,7 +2864,6 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
   }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
   document.querySelectorAll('.reveal, .stagger').forEach(el => revealObserver.observe(el));
 
-  // Embalaje tabs
   const embTabs = document.querySelectorAll('.emb-tab');
   const embPanels = document.querySelectorAll('.emb-panel');
   embTabs.forEach(tab => {
@@ -2957,7 +2881,6 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
     });
   });
 
-  // Video modal
   const videoBtn = document.getElementById('videoBtn');
   const videoModal = document.getElementById('videoModal');
   const videoModalClose = document.getElementById('videoModalClose');
@@ -2966,7 +2889,7 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
     videoModal.classList.add('open');
     videoModal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
-    // autoplay video if present
+
     const v = videoModal.querySelector('video');
     if (v) { try { v.play(); } catch(e){} }
   }
@@ -2978,7 +2901,7 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
     const v = videoModal.querySelector('video');
     if (v) v.pause();
     const iframe = videoModal.querySelector('iframe');
-    if (iframe) iframe.src = iframe.src; // hard-reset to stop playback
+    if (iframe) iframe.src = iframe.src;
   }
   videoBtn && videoBtn.addEventListener('click', openVideo);
   videoModalClose && videoModalClose.addEventListener('click', closeVideo);
@@ -2989,7 +2912,6 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
     if (e.key === 'Escape' && videoModal && videoModal.classList.contains('open')) closeVideo();
   });
 
-  // Quote form submit → toast
   const quoteForm = document.getElementById('quoteForm');
   const quoteToast = document.getElementById('quoteToast');
   const toastClose = document.getElementById('toastClose');
@@ -3007,7 +2929,6 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
 
   toastClose && toastClose.addEventListener('click', hideToast);
 
-  // ===== Coverage section interactions =====
   (function coverage() {
     const section = document.getElementById('cobertura');
     if (!section) return;
@@ -3017,10 +2938,8 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
     const counts = [...section.querySelectorAll('.count')];
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // stagger node appearance
     pins.forEach((p, i) => { p.style.transitionDelay = (i * 70) + 'ms'; });
 
-    // prepare route trace (hidden lengths)
     routes.forEach(r => {
       const len = r.getTotalLength();
       r.dataset.len = len;
@@ -3043,7 +2962,7 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
         const dur = 1300, t0 = performance.now();
         const tick = (now) => {
           const k = Math.min(1, (now - t0) / dur);
-          const eased = 1 - Math.pow(1 - k, 3); // easeOutCubic
+          const eased = 1 - Math.pow(1 - k, 3);
           fmt(el, target * eased);
           if (k < 1) requestAnimationFrame(tick);
           else fmt(el, target);
@@ -3060,7 +2979,7 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
         const dur = isMain ? 900 : 650;
         r.style.transition = `stroke-dashoffset ${dur}ms ease ${delay}ms`;
         requestAnimationFrame(() => { r.style.strokeDashoffset = '0'; });
-        // after trace, main corridor keeps a flowing dash (truck movement)
+
         if (isMain) {
           r.addEventListener('transitionend', function onEnd(e) {
             if (e.propertyName !== 'stroke-dashoffset') return;
@@ -3086,15 +3005,14 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
     obs.observe(section);
   })();
 
-  // ===== Nosotros — rolling-digit odometer =====
   (function odometer() {
     const section = document.getElementById('nosotros');
     if (!section) return;
     const nums = [...section.querySelectorAll('.nos-hl-num')];
     if (!nums.length) return;
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const CELL = 1.1; // em, must match .odo-cell height
-    const CYCLES = 2; // full 0–9 spins before landing
+    const CELL = 1.1;
+    const CYCLES = 2;
 
     function build(el) {
       const text = el.textContent.trim();
@@ -3127,7 +3045,7 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
     function roll(reels) {
       reels.forEach((r, i) => {
         if (reduce) { r.strip.style.transform = `translateY(${-r.finalIndex * CELL}em)`; return; }
-        const dur = 1700 + i * 240; // rightmost digits spin longer
+        const dur = 1700 + i * 240;
         r.strip.style.transition = `transform ${dur}ms cubic-bezier(.18,.7,.16,1)`;
         requestAnimationFrame(() => {
           r.strip.style.transform = `translateY(${-r.finalIndex * CELL}em)`;
@@ -3141,16 +3059,14 @@ DE <em style="font-style: italic; color: var(--green); font-weight: 800;">LOGÍS
         obs.disconnect();
         nums.forEach((el, k) => {
           const reels = build(el);
-          setTimeout(() => roll(reels), k * 240); // stagger between the 3 cards
+          setTimeout(() => roll(reels), k * 240);
         });
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
-    // observe the numbers' own container (not the tall section) so a viewport
-    // shorter than the section still crosses the threshold
+
     obs.observe(section.querySelector('.nos-highlights') || section);
   })();
 
-  // ===== Cómo funciona — progressive step build =====
   (function processSteps() {
     const section = document.getElementById('proceso');
     if (!section) return;
@@ -3191,6 +3107,7 @@ var nv=document.createElement('div');nv.className='m-only m-qnav';nv.innerHTML='
 var cur=0;function set(n,scroll){cur=n;ed.dataset.mstep=n;S.forEach(function(ids,i){ids.forEach(function(id){var e=document.getElementById(id);if(e)e.classList.toggle('m-step-off',i!==n);});});$('b',hd).textContent=n+1;$('h4',hd).textContent=T[n];$$('.m-qbar i',hd).forEach(function(x,i){x.classList.toggle('on',i<=n);});if(N[n])$('.m-next span',nv).textContent=N[n];if(scroll&&mq.matches)scrollTo({top:fm.getBoundingClientRect().top+scrollY-76,behavior:'smooth'});}
 $('.m-next',nv).addEventListener('click',function(){set(Math.min(2,cur+1),1);});$('.m-back',nv).addEventListener('click',function(){set(Math.max(0,cur-1),1);});
 var rv=$('#qfToReview');if(rv)rv.addEventListener('click',function(){setTimeout(function(){if(!mq.matches)return;for(var i=0;i<S.length;i++){if(S[i].some(function(id){var e=document.getElementById(id);return e&&e.querySelector('.is-error');})){if(i!==cur)set(i,1);break;}}},30);});
+var rw=$('#qfReview');if(rw)rw.addEventListener('click',function(e){var g=e.target.closest('[data-goto]');if(!g||!mq.matches)return;for(var i=0;i<S.length;i++){if(S[i].indexOf(g.dataset.goto)>-1){set(i);break;}}});
 set(0);}
 })();
 </script>
